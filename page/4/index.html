@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>风车王国</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="life is like a boat.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="风车王国">
+<meta property="og:url" content="http://clz619.github.io/page/4/index.html">
+<meta property="og:site_name" content="风车王国">
+<meta property="og:description" content="life is like a boat.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="风车王国">
+<meta name="twitter:description" content="life is like a boat.">
+  
+    <link rel="alternative" href="/atom.xml" title="风车王国" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <script src="/style.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/images/ico.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">lizhong.chen</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">每天进步一点点</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/忠忠闲谈">忠忠闲谈</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/clz619" title="github">github</a>
+		        
+					<a class="mail" target="_blank" href="mailto:admin@chenlizhong.cn" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">lizhong.chen</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/images/ico.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">lizhong.chen</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">每天进步一点点</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/忠忠闲谈">忠忠闲谈</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/clz619" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:admin@chenlizhong.cn" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        
+  
+    <article id="post-XSD(2)--基础元素" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/26/XSD(2)--基础元素/">XSD(2)--基础元素</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>定义元素</p>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;xs:element name=<span class="string">"name"</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">"xs:string"</span> /&gt;</div></pre></td></tr></table></figure>
+<p>最常用的类型:  </p>
+<ul>
+<li>xs:string  </li>
+<li>xs:decimal  </li>
+<li>xs:integer  </li>
+<li>xs:boolean  </li>
+<li>xs:date  </li>
+<li>xs:time  </li>
+</ul>
+<p><strong>default</strong>定义元素的默认值：</p>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;xs:element name=<span class="string">"color"</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">"xs:string"</span> <span class="keyword">default</span>=<span class="string">"red"</span> /&gt;</div></pre></td></tr></table></figure>
+<p><strong>fixed</strong>固定值会自动分配给元素，并且无法规定另外一个值</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="symbol">xs:el</span>ement name=<span class="string">"color"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span> <span class="built_in">fixed</span>=<span class="string">"red"</span> /&gt;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/11/26/XSD(2)--基础元素/" class="archive-article-date">
+  	<time datetime="2015-11-26T10:50:53.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-11-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xsd/">xsd</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-XSD(1)--Xml Schema Definition" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/26/XSD(1)--Xml Schema Definition/">XSD(1)--Xml Schema Definition</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>Xml Schema是基于xml的dtd替代者。<br>Xml Schema描述xml文档的结构。<br>Xml Schema语言也称作Xml Schema定义（XML Schema Definition,XSD）  </p>
+<h3 id="1-1什么是Xml-Schema"><a href="#1-1什么是Xml-Schema" class="headerlink" title="1.1什么是Xml Schema"></a>1.1什么是Xml Schema</h3><p><strong>Xml Schema</strong>  </p>
+<ul>
+<li>定义可出现在文档中的元素</li>
+<li>定义可出现在文档中的属性</li>
+<li>定义哪个元素是子元素</li>
+<li>定义子元素的次序</li>
+<li>定义子元素的数目</li>
+<li>定义元素是否为空，或者是否可包含文本</li>
+<li>定义元素和属性的数据类型</li>
+<li>定义元素和属性的默认值以及固定值</li>
+</ul>
+<h2 id="2-第一个xsd"><a href="#2-第一个xsd" class="headerlink" title="2.第一个xsd"></a>2.第一个xsd</h2><p>note.xsd<br>note元素是一个符合类型，因为它包含其他的子元素。其它元素（to,from,heading,body）是简易类型，因为它们没有包含其他元素。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;?xml <span class="keyword">version</span>=<span class="string">"1.0"</span>?&gt;</div><div class="line">&lt;<span class="keyword">x</span><span class="variable">s:schema</span> xmln<span class="variable">s:xs</span>=<span class="string">"http://www.w3.org/2001/XMLSchema"</span></div><div class="line">        targetNamespace=<span class="string">"http://www.chenlizhong.cn"</span></div><div class="line">        xmlns=<span class="string">"http://www.chenlizhong.cn"</span> elementFormDefault=<span class="string">"qualified"</span>&gt;</div><div class="line"></div><div class="line">    &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"note"</span>&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div><div class="line">            &lt;<span class="keyword">x</span><span class="variable">s:sequence</span>&gt;</div><div class="line">                &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"to"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span>/&gt;</div><div class="line">                &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"from"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span>/&gt;</div><div class="line">                &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"heading"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span>/&gt;</div><div class="line">                &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"body"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span>/&gt;</div><div class="line">            &lt;/<span class="keyword">x</span><span class="variable">s:sequence</span>&gt;</div><div class="line">        &lt;/<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div><div class="line">    &lt;/<span class="keyword">x</span><span class="variable">s:element</span>&gt;</div><div class="line"></div><div class="line">&lt;/<span class="keyword">x</span><span class="variable">s:schema</span>&gt;</div></pre></td></tr></table></figure>
+<h2 id="3-schema解释"><a href="#3-schema解释" class="headerlink" title="3.schema解释"></a>3.schema解释</h2><p><strong>targetNamespace=”<a href="http://www.chenlizhong.cn" target="_blank" rel="external">http://www.chenlizhong.cn</a>“</strong><br>定义此schema定义的元素来自命名空间。  </p>
+<p><strong>xmlns＝”<a href="http://www.chenlizhong.cn" target="_blank" rel="external">http://www.chenlizhong.cn</a>“</strong><br>指出默认的命名空间是<em>www.chenlizhong.cn</em></p>
+<p><strong>elementFormDefault=”qualified”</strong><br>指出任何xml实例文档所使用的且在此schema中声明过的元素必须被命名空间限定。  </p>
+<p><strong>xmlns:xs=”<a href="http://www.w3.org/2001/XMLSchema" target="_blank" rel="external">http://www.w3.org/2001/XMLSchema</a>“</strong><br>定义schema中用到的元素和数据来自命名空间为<em><a href="http://www.w3.org/2001/XMLSchema" target="_blank" rel="external">http://www.w3.org/2001/XMLSchema</a></em>，同时还规定了来自命名空间<em><a href="http://www.w3.org/2001/XMLSchema" target="_blank" rel="external">http://www.w3.org/2001/XMLSchema</a></em>的元素和数据类型应该使用前缀xs。  </p>
+<p>实例命名空间：<br><strong>xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance" target="_blank" rel="external">http://www.w3.org/2001/XMLSchema-instance</a>“</strong>  </p>
+<p><strong>xsi:schemaLocation=”<a href="http://www.chenlizhong.cn" target="_blank" rel="external">http://www.chenlizhong.cn</a> <a href="http://www.chenlizhong.cn/note.xsd" target="_blank" rel="external">http://www.chenlizhong.cn/note.xsd</a>“</strong><br>schemaLocation属性，两个值。第一个值是需要使用的命名空间，第二个值是供命名空间的使用的xml schema的位置。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/11/26/XSD(1)--Xml Schema Definition/" class="archive-article-date">
+  	<time datetime="2015-11-26T05:50:53.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-11-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xsd-schema-definition/">xsd,schema definition</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-camel(1)-简介" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/08/camel(1)-简介/">camel(1)-简介</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##简介  </p>
+<p>camel uses a java based </p>
+<p><img src="http://camel.apache.org/architecture.data/camel-components.png" alt="Camel Diagram"></p>
+<p>参考：<br><a href="http://camel.apache.org/architecture.html" target="_blank" rel="external">camel</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/11/08/camel(1)-简介/" class="archive-article-date">
+  	<time datetime="2015-11-08T14:13:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-11-08</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/camel，模版/">camel，模版</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-规则引擎技术" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/08/规则引擎技术/">规则引擎技术</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##简介  </p>
+<p>现实生活中，规则无处不在。法律、制度均是。<br>对于企业级应用来说，在it技术领域，很多地方也应用了规则，比如路由表，防火墙策略，乃至角色权限控制，或者web框架中的url匹配。不管是哪种规则，都规定了一组确定的条件和此条件所产生的结果。<br>规则作为一种知识，其典型运用就是通过实际情况，根据给定的一组规则，得出结论。这个结论可能是某种静态的结果，也可能是需要进行的一组操作。<br>这种规则的运用过程叫做推理。<br>如果由程序来处理推理过程，那么这个程序就叫做推理机／推理引擎。推理引擎跟进知识表示的不同采取的控制策略也是不同的，常见的类型包括基于神经网络、基于案例和基于规则的推理机。<br>其中，基于规则的推理机易于理解、易于获取、易于管理，被广泛采用。这种推理引擎被称为“规则引擎”。  </p>
+<p>规则引擎起源于基于规则的专家系统（专家系统CLIPS：源于1984年nasa的人工智能项目，现已开源，由c编写），而基于规则的专家系统又是专家系统的其中一个分支。专家系统属于人工智能的范畴，它模仿人类的推理方式，使用试探性的方法进行推理，并使用人类能理解的术语解释和证明它的推理结论。  </p>
+<p>参考：<a href="http://www.biaodianfu.com/rules-engine.html" target="_blank" rel="external">http://www.biaodianfu.com/rules-engine.html</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/11/08/规则引擎技术/" class="archive-article-date">
+  	<time datetime="2015-11-08T02:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-11-08</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/引擎/">引擎</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/规则/">规则</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-osgi(1)--基于sts、virgo的环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/26/osgi(1)--基于sts、virgo的环境搭建/">osgi(1)--基于sts、virgo的环境搭建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://spring.io/tools/sts/all" target="_blank" rel="external">Spring Tool Suite</a>  </p>
+<p><a href="http://www.eclipse.org/virgo/download/" target="_blank" rel="external">Virgo for apache tomcat</a>  </p>
+<p><a href="http://wiki.eclipse.org/Virgo/Tooling" target="_blank" rel="external">eclipse install virgo wiki</a></p>
+<p>sts-server-runtime environments add virgo runtime</p>
+<hr>
+<p>启动virgo server</p>
+<p><a href="http://localhost:8080/" target="_blank" rel="external">http://localhost:8080/</a></p>
+<p>进入virgo管理界面<br><a href="http://admin:springsource@localhost:8080/admin/" target="_blank" rel="external">http://admin:springsource@localhost:8080/admin/</a></p>
+<p>Host Properties<br>Name     Value<br>OSGi Runtime     Apache Tomcat/7.0.61 on Eclipse Virgo 3.6.4.RELEASE<br>Virtual Machine     1.7.0_71 - Java HotSpot(TM) 64-Bit Server VM 24.71-b01 (Oracle Corporation)<br>Operating System     Mac OS X 10.11 (x86_64)</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/10/26/osgi(1)--基于sts、virgo的环境搭建/" class="archive-article-date">
+  	<time datetime="2015-10-26T14:53:18.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/osgi/">osgi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sts/">sts</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/virgo/">virgo</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-centos7修改时间" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/18/centos7修改时间/">centos7修改时间</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-attr">[root@server ~]</span># <span class="selector-tag">date</span> <span class="selector-tag">-R</span> ;date +%z</div><div class="line">Tue, 20 Oct 2015 <span class="attribute">17</span>:<span class="number">04</span>:<span class="number">23</span> +<span class="number">0800</span></div><div class="line">+<span class="number">0800</span></div><div class="line">[root<span class="variable">@server</span> ~]#  ntpdate time.windows.com &amp;&amp; hwclock -w </div><div class="line"><span class="number">18</span> Oct <span class="number">09</span>:<span class="number">10</span>:<span class="number">54</span> ntpdate[<span class="number">12207</span>]: step time server <span class="number">104.41</span>.<span class="number">150.68</span> offset -<span class="number">201264.370627</span> sec</div><div class="line">[root<span class="variable">@server</span> ~]# date -R</div><div class="line">Sun, <span class="number">18</span> Oct <span class="number">2015</span> <span class="number">09</span>:<span class="number">11</span>:<span class="number">56</span> +<span class="number">0800</span></div></pre></td></tr></table></figure>
+<p>若没有安装ntpdate，则安装</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">[root@server ~]# ntpdate time.windows.com &amp;&amp; hwclock -w  </div><div class="line">-bash: ntpdate: 未找到命令</div><div class="line">[root@server ~]# yum search ntpdate</div><div class="line">已加载插件：fastestmirror</div><div class="line">Loading mirror speeds from cached hostfile</div><div class="line"> * base: mirrors<span class="number">.163</span>.com</div><div class="line"> * elrepo: elrepo.org</div><div class="line"> * extras: mirrors.zju.edu.cn</div><div class="line"> * updates: mirrors<span class="number">.163</span>.com</div><div class="line">============================================= N/S matched: ntpdate =============================================</div><div class="line">ntpdate.x86_64 : Utility to <span class="keyword">set</span> the <span class="comment">date and time via NTP</span></div><div class="line"></div><div class="line">  名称和简介匹配 only，使用“search <span class="comment">all</span>”试试。</div><div class="line">[root@server ~<span class="comment">]# yum install ntpdate</span></div><div class="line">已加载插件：fastestmirror</div><div class="line">base                                                                                     |<span class="comment"> 3.6 kB  00:00:00</span>     </div><div class="line">docker-main-repo                                                                         |<span class="comment"> 2.9 kB  00:00:00</span>     </div><div class="line">elrepo                                                                                   |<span class="comment"> 2.9 kB  00:00:00</span>     </div><div class="line">extras                                                                                   |<span class="comment"> 3.4 kB  00:00:00</span>     </div><div class="line">updates                                                                                  |<span class="comment"> 3.4 kB  00:00:00</span>     </div><div class="line">(1/<span class="number">2</span>): extras/7/x86_64/primary_db                                                        |<span class="comment">  87 kB  00:00:00</span>     </div><div class="line">(2/<span class="number">2</span>): elrepo/primary_db                                                                 |<span class="comment"> 340 kB  00:00:03</span>     </div><div class="line">Loading <span class="comment">mirror speeds from cached hostfile</span></div><div class="line"> * base: mirrors.163.com</div><div class="line"> * elrepo: www.jules.fm</div><div class="line"> * extras: centos.cs.nctu.edu.tw</div><div class="line"> * updates: mirrors.163.com</div><div class="line">正在解决依赖关系</div><div class="line">--&gt; 正在检查事务</div><div class="line">---&gt; 软件包 ntpdate.x86_64.0.4.2.6p5-19.el7.centos.1 将被 安装</div><div class="line">--&gt; 解决依赖关系完成</div><div class="line"></div><div class="line">依赖关系解决</div><div class="line"></div><div class="line">================================================================================================================</div><div class="line"> Package               架构                 版本                                    源                     大小</div><div class="line">================================================================================================================</div><div class="line">正在安装:</div><div class="line"> ntpdate               <span class="comment">x86_64               4.2.6p5-19.el7.centos.1                 updates                82 k</span></div><div class="line"></div><div class="line">事务概要</div><div class="line">================================================================================================================</div><div class="line">安装  1 软件包</div><div class="line"></div><div class="line">总下载量：82 k</div><div class="line">安装大小：121 k</div><div class="line">Is <span class="comment">this ok [y</span>/d/<span class="comment">N]: y</span></div><div class="line">Downloading <span class="comment">packages:</span></div><div class="line">ntpdate-4.2.6p5-19.el7.centos.1.x86_64.rpm                                               |<span class="comment">  82 kB  00:00:00</span>     </div><div class="line">Running <span class="comment">transaction check</span></div><div class="line">Running <span class="comment">transaction test</span></div><div class="line">Transaction <span class="comment">test succeeded</span></div><div class="line">Running <span class="comment">transaction</span></div><div class="line">  正在安装    : ntpdate-4.2.6p5-19.el7.centos.1.x86_64                                                      <span class="comment">1</span>/<span class="number">1</span> </div><div class="line">  验证中      : ntpdate<span class="number">-4.2</span><span class="number">.6</span>p5<span class="number">-19.</span>el7.centos<span class="number">.1</span>.x86_64                                                      <span class="number">1</span>/<span class="comment">1</span> </div><div class="line"></div><div class="line">已安装:</div><div class="line">  ntpdate.x86_64 <span class="comment">0:4.2.6p5-19.el7.centos.1</span>                                                                      </div><div class="line"></div><div class="line">完毕！</div></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/10/18/centos7修改时间/" class="archive-article-date">
+  	<time datetime="2015-10-18T00:59:55.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-18</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos/">centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/时间/">时间</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-家用动态域名解析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/17/家用动态域名解析/">家用动态域名解析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>方法一：<a href="http://service.oray.com/question/1890.html" target="_blank" rel="external">花生壳linux安装</a></p>
+<p>方法二：路由器中设置动态域名，登录花生壳</p>
+<p>问题：花生壳经常映射不正确的ip地址。</p>
+<p>原因：在2台路由器上登录了花生壳，导致dns映射的ip不对。并且linux上启动了phddns。导致映射混乱。只保留一个就正常了。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/10/17/家用动态域名解析/" class="archive-article-date">
+  	<time datetime="2015-10-17T14:54:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-17</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态域名/">动态域名</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-docker-(5)搭建私有仓库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/17/docker-(5)搭建私有仓库/">docker-(5)搭建私有仓库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://docs.docker.com/registry/deploying/" target="_blank" rel="external">搭建私库</a></p>
+<ol>
+<li>拖取 registry<br>docker pull registry  </li>
+<li>docker run -d -p 5000:5000 registry</li>
+</ol>
+<p>start your registry:<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker <span class="built_in">run</span> -d -p <span class="number">5000</span>:<span class="number">5000</span> <span class="comment">--restart=always --name registry registry:2</span></div></pre></td></tr></table></figure></p>
+<p>get any image from the hub<br>and<br>tag it to point to your registry<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull centos/centos7 &amp;&amp; docker <span class="keyword">tag</span> <span class="title">centos</span>/centos7 localhost:<span class="number">5000</span>/centos/centos7</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/10/17/docker-(5)搭建私有仓库/" class="archive-article-date">
+  	<time datetime="2015-10-17T09:44:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-17</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/仓库/">仓库</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-docker-(4)标记、推送、拖取镜像" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/13/docker-(4)标记、推送、拖取镜像/">docker-(4)标记、推送、拖取镜像</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://docs.docker.com/linux/step_siz/" target="_blank" rel="external">tag push and pull your image</a></p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">[root@sinno01 mydockerbuild]<span class="comment"># docker images</span></div><div class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE</div><div class="line">docker-whale        latest              6c94d2cebae0       <span class="number"> 21 </span>minutes ago      255.3 MB</div><div class="line">centos              latest              0f73ae75014f       <span class="number"> 5 </span>weeks ago         172.3 MB</div><div class="line">&lt;none&gt;              &lt;none&gt;              283f8fff4e73       <span class="number"> 5 </span>weeks ago         172.3 MB</div><div class="line">hello-world         latest              8889088cb38d       <span class="number"> 9 </span>weeks ago        <span class="number"> 960 </span>B</div><div class="line">docker/whalesay     latest              ded5e192a685       <span class="number"> 4 </span>months ago       <span class="number"> 247 </span>MB</div><div class="line">[root@sinno01 mydockerbuild]<span class="comment"># docker tag 6c94d2cebae0 clz619/docker-whale:latest</span></div><div class="line">[root@sinno01 mydockerbuild]<span class="comment"># docker images</span></div><div class="line">REPOSITORY            TAG                 IMAGE ID            CREATED             VIRTUAL SIZE</div><div class="line">docker-whale          latest              6c94d2cebae0       <span class="number"> 22 </span>minutes ago      255.3 MB</div><div class="line">clz619/docker-whale   latest              6c94d2cebae0       <span class="number"> 22 </span>minutes ago      255.3 MB</div><div class="line">centos                latest              0f73ae75014f       <span class="number"> 5 </span>weeks ago         172.3 MB</div><div class="line">&lt;none&gt;                &lt;none&gt;              283f8fff4e73       <span class="number"> 5 </span>weeks ago         172.3 MB</div><div class="line">hello-world           latest              8889088cb38d       <span class="number"> 9 </span>weeks ago        <span class="number"> 960 </span>B</div><div class="line">docker/whalesay       latest              ded5e192a685       <span class="number"> 4 </span>months ago       <span class="number"> 247 </span>MB</div><div class="line">[root@sinno01 mydockerbuild]<span class="comment"># docker login --username=name --password=pwd</span></div><div class="line">Email: email</div><div class="line">WARNING: login credentials saved in /root/.docker/config.json</div><div class="line">Login Succeeded</div><div class="line">[root@sinno01 mydockerbuild]<span class="comment"># docker push clz619/docker-whale</span></div><div class="line">The push refers to a repository [docker.io/clz619/docker-whale] (len: 1)</div><div class="line">6c94d2cebae0: Image successfully pushed </div><div class="line">2c15b31466da: Buffering to Disk</div></pre></td></tr></table></figure>
+<p>##remove docker<br>You can use an ID or the name to remove an image<br>docker rmi -f docker-whale<br>docker rmi -f ded5e192a685  </p>
+<p>##download image<br>docker pull clz619/docker-whale  </p>
+<p>##run<br>docker run clz619/docker-whale  </p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/10/13/docker-(4)标记、推送、拖取镜像/" class="archive-article-date">
+  	<time datetime="2015-10-13T10:00:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/镜像/">镜像</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-docker-(3)创建属于自己的镜像" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/13/docker-(3)创建属于自己的镜像/">docker-(3)创建属于自己的镜像</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://docs.docker.com/linux/step_four/" target="_blank" rel="external">build your own image</a></p>
+<p>##背景<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">如果你不知道该说什么，你想让巨鲸自己说。</div><div class="line"></div><div class="line">1. 写一个dockerfile</div></pre></td></tr></table></figure></p>
+<p>[root@sinno01 docker]# mkdir mydockerbuild<br>[root@sinno01 docker]# cd mydockerbuild/<br>[root@sinno01 mydockerbuild]# ls<br>[root@sinno01 mydockerbuild]# vi Dockerfile<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">2. </span>Dockerfile内容</div></pre></td></tr></table></figure></p>
+<p>FROM docker/whalesay:latest<br>RUN apt-get -y update &amp;&amp; apt-get install -y fortunes<br>CMD /usr/games/fortune -a | cowsay<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">3. </span>根据Dockerfile生成镜像</div></pre></td></tr></table></figure></p>
+<p>[root@sinno01 mydockerbuild]# docker build -t docker-whale .<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">4. </span>执行新建的docker-whale</div><div class="line"><span class="bullet">5. </span></div><div class="line"></div><div class="line"></div><div class="line"><span class="section">##备注</span></div><div class="line"></div><div class="line">[<span class="string">fortunes</span>](<span class="link">http://blog.fens.me/r-fortunes/</span>)  </div><div class="line">&gt;fortunes库是一个R语言的语录集，截止到2012年4月，一共总结了316条R-help的留言，这些都是R语言智慧的精华。让R语言的后辈使用者，可以更了解R语言的本身，了解R的精神。  </div><div class="line">&gt;fortunes项目发布页：<span class="xml"><span class="tag">&lt;<span class="name">http:</span>//<span class="attr">cran.r-project.org</span>/<span class="attr">web</span>/<span class="attr">packages</span>/<span class="attr">fortunes</span>/<span class="attr">index.html</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>[root@sinno01 docker]# mkdir mydockerbuild<br>[root@sinno01 docker]# cd mydockerbuild/<br>[root@sinno01 mydockerbuild]# ls<br>[root@sinno01 mydockerbuild]# vi Dockerfile<br>[root@sinno01 mydockerbuild]# ls<br>Dockerfile<br>[root@sinno01 mydockerbuild]# docker build -t docker-whale .<br>Sending build context to Docker daemon 2.048 kB<br>Step 0 : FROM docker/whalesay:latest<br> —&gt; ded5e192a685<br>Step 1 : RUN apt-get -y update &amp;&amp; apt-get install -y fortunes<br> —&gt; Running in 9b27c87b4fd4<br>Ign <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty InRelease<br>Get:1 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates InRelease [64.4 kB]<br>Get:2 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security InRelease [64.4 kB]<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty Release.gpg<br>Get:3 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/main Sources [299 kB]<br>Get:4 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/restricted Sources [4513 B]<br>Get:5 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/universe Sources [176 kB]<br>Get:6 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/main amd64 Packages [790 kB]<br>Get:7 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/restricted amd64 Packages [22.7 kB]<br>Get:8 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/universe amd64 Packages [420 kB]<br>Get:9 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/main Sources [122 kB]<br>Get:10 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/restricted Sources [3230 B]<br>Get:11 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/universe Sources [35.4 kB]<br>Get:12 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/main amd64 Packages [440 kB]<br>Get:13 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/restricted amd64 Packages [19.4 kB]<br>Get:14 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/universe amd64 Packages [151 kB]<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty Release<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/main Sources<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/restricted Sources<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/universe Sources<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/main amd64 Packages<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/restricted amd64 Packages<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/universe amd64 Packages<br>Fetched 2612 kB in 1min 52s (23.3 kB/s)<br>Reading package lists…<br>Reading package lists…<br>Building dependency tree…<br>Reading state information…<br>The following extra packages will be installed:<br>  fortune-mod fortunes-min librecode0<br>Suggested packages:<br>  x11-utils bsdmainutils<br>The following NEW packages will be installed:<br>  fortune-mod fortunes fortunes-min librecode0<br>0 upgraded, 4 newly installed, 0 to remove and 46 not upgraded.<br>Need to get 1961 kB of archives.<br>After this operation, 4817 kB of additional disk space will be used.<br>Get:1 <a href="http://archive.ubuntu.com/ubuntu/" target="_blank" rel="external">http://archive.ubuntu.com/ubuntu/</a> trusty/main librecode0 amd64 3.6-21 [771 kB]<br>Get:2 <a href="http://archive.ubuntu.com/ubuntu/" target="_blank" rel="external">http://archive.ubuntu.com/ubuntu/</a> trusty/universe fortune-mod amd64 1:1.99.1-7 [39.5 kB]<br>Get:3 <a href="http://archive.ubuntu.com/ubuntu/" target="_blank" rel="external">http://archive.ubuntu.com/ubuntu/</a> trusty/universe fortunes-min all 1:1.99.1-7 [61.8 kB]<br>Get:4 <a href="http://archive.ubuntu.com/ubuntu/" target="_blank" rel="external">http://archive.ubuntu.com/ubuntu/</a> trusty/universe fortunes all 1:1.99.1-7 [1089 kB]<br>debconf: unable to initialize frontend: Dialog<br>debconf: (TERM is not set, so the dialog frontend is not usable.)<br>debconf: falling back to frontend: Readline<br>debconf: unable to initialize frontend: Readline<br>debconf: (This frontend requires a controlling tty.)<br>debconf: falling back to frontend: Teletype<br>dpkg-preconfigure: unable to re-open stdin:<br>Fetched 1961 kB in 19s (101 kB/s)<br>Selecting previously unselected package librecode0:amd64.<br>(Reading database … 13116 files and directories currently installed.)<br>Preparing to unpack …/librecode0_3.6-21_amd64.deb …<br>Unpacking librecode0:amd64 (3.6-21) …<br>Selecting previously unselected package fortune-mod.<br>Preparing to unpack …/fortune-mod_1%3a1.99.1-7_amd64.deb …<br>Unpacking fortune-mod (1:1.99.1-7) …<br>Selecting previously unselected package fortunes-min.<br>Preparing to unpack …/fortunes-min_1%3a1.99.1-7_all.deb …<br>Unpacking fortunes-min (1:1.99.1-7) …<br>Selecting previously unselected package fortunes.<br>Preparing to unpack …/fortunes_1%3a1.99.1-7_all.deb …<br>Unpacking fortunes (1:1.99.1-7) …<br>Setting up librecode0:amd64 (3.6-21) …<br>Setting up fortune-mod (1:1.99.1-7) …<br>Setting up fortunes-min (1:1.99.1-7) …<br>Setting up fortunes (1:1.99.1-7) …<br>Processing triggers for libc-bin (2.19-0ubuntu6.6) …<br> —&gt; 2c15b31466da<br>Removing intermediate container 9b27c87b4fd4<br>Step 2 : CMD /usr/games/fortune -a | cowsay<br> —&gt; Running in 48f098e4fef5<br> —&gt; 6c94d2cebae0<br>Removing intermediate container 48f098e4fef5<br>Successfully built 6c94d2cebae0<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">查看镜像</div></pre></td></tr></table></figure></p>
+<p>[root@sinno01 mydockerbuild]# docker images<br>REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE<br>docker-whale        latest              6c94d2cebae0        2 minutes ago       255.3 MB<br>centos              latest              0f73ae75014f        5 weeks ago         172.3 MB</p>
+<p><none>              <none>              283f8fff4e73        5 weeks ago         172.3 MB<br>hello-world         latest              8889088cb38d        9 weeks ago         960 B<br>docker/whalesay     latest              ded5e192a685        4 months ago        247 MB</none></none></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">执行新建的docker-whale</div></pre></td></tr></table></figure>
+<p>[root@sinno01 mydockerbuild]# docker run docker-whale</p>
+<hr>
+<h2 id="lt-Hailing-frequencies-open-Captain-gt"><a href="#lt-Hailing-frequencies-open-Captain-gt" class="headerlink" title="&lt; Hailing frequencies open, Captain. &gt;"></a>&lt; Hailing frequencies open, Captain. &gt;</h2><pre><code>\
+ \
+  \     
+                ##        .            
+          ## ## ##       ==            
+       ## ## ## ##      ===            
+   /&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;___/ ===        
+</code></pre><p>  <del>~ {</del> <del>~~ ~</del> <del>~~ ~~ ~ /  ===- ~</del><br>       _<strong>_</strong> o          <strong>/<br>        \    \        </strong>/<br>          _<strong>_____</strong>/<br>[root@sinno01 mydockerbuild]# docker run docker-whale</p>
+<hr>
+<p>/ <overfiend> penis jokes are okay in \</overfiend></p>
+<h2 id="mixed-company-VMS-is-NOT"><a href="#mixed-company-VMS-is-NOT" class="headerlink" title="\ mixed company. VMS is NOT!!!        /"></a>\ mixed company. VMS is NOT!!!        /</h2><pre><code>\
+ \
+  \     
+                ##        .            
+          ## ## ##       ==            
+       ## ## ## ##      ===            
+   /&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;___/ ===        
+</code></pre><p>  <del>~ {</del> <del>~~ ~</del> <del>~~ ~~ ~ /  ===- ~</del><br>       _<strong>_</strong> o          <strong>/<br>        \    \        </strong>/<br>          _<strong>_____</strong>/   </p>
+<p>```</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/10/13/docker-(3)创建属于自己的镜像/" class="archive-article-date">
+  	<time datetime="2015-10-13T09:22:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/镜像/">镜像</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+    </nav>
+  
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 lizhong.chen
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/"
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/忠忠闲谈/" style="font-size: 11.67px;">忠忠闲谈</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">圆梦此生无憾</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

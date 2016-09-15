@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>风车王国</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="life is like a boat.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="风车王国">
+<meta property="og:url" content="http://clz619.github.io/page/5/index.html">
+<meta property="og:site_name" content="风车王国">
+<meta property="og:description" content="life is like a boat.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="风车王国">
+<meta name="twitter:description" content="life is like a boat.">
+  
+    <link rel="alternative" href="/atom.xml" title="风车王国" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <script src="/style.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/images/ico.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">lizhong.chen</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">每天进步一点点</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/忠忠闲谈">忠忠闲谈</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/clz619" title="github">github</a>
+		        
+					<a class="mail" target="_blank" href="mailto:admin@chenlizhong.cn" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">lizhong.chen</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/images/ico.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">lizhong.chen</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">每天进步一点点</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/忠忠闲谈">忠忠闲谈</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/clz619" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:admin@chenlizhong.cn" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        
+  
+    <article id="post-docker-(2)理解镜像和容器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/13/docker-(2)理解镜像和容器/">docker-(2)理解镜像和容器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://docs.docker.com/linux/step_two/" target="_blank" rel="external">learn about image&amp;containers</a></p>
+<p>As the last step in your installation, you ran the <figure class="highlight docker"><figcaption><span>run hello-world command```. With this one command, you completed the core tasks to using Docker. The command you ran had three parts.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">![dockerCommand](http://docs.docker.com/tutimg/container_explainer.png)</div><div class="line"> </div><div class="line">A container is a stripped-to-basics version of a Linux operating system.   </div><div class="line">An image is software you load into a container.   </div><div class="line">When you ran the command, the Docker software:</div><div class="line"></div><div class="line">* checked to see if you had the hello-world software image</div><div class="line">* downloaded the image <span class="keyword">from</span> the Docker Hub (more about the hub later)</div><div class="line">* loaded the image into the container and “ran” it</div><div class="line"></div><div class="line">Depending on how it was built, an image might <span class="keyword">run</span> a simple, single command and then exit. This is what Hello-World did.</div><div class="line"></div><div class="line">A Docker image, though, is capable of much more. An image can start software as complex as a database, wait for you (or someone else) to <span class="keyword">add</span> data, store the data for later use, and then wait for the next person.</div><div class="line"></div><div class="line">Who built the hello-world software image though? In this case, Docker did but anyone can. Docker lets people (or companies) create and share software through Docker images. Using Docker, you don’t have to worry about whether your computer can <span class="keyword">run</span> the software in a Docker image — a Docker container can always <span class="keyword">run</span> it.</div></pre></td></tr></table></figure></p>
+<p>[root@sinno01 docker]# docker run hello-world<br>Unable to find image ‘hello-world:latest’ locally<br>latest: Pulling from library/hello-world<br>03818fa0f871: Pull complete<br>8889088cb38d: Pull complete<br>Digest: sha256:a68868bfe696c00866942e8f5ca39e3e31b79c1e50feaee4ce5e28df2f051d5c<br>Status: Downloaded newer image for hello-world:latest</p>
+<p>Hello from Docker.<br>This message shows that your installation appears to be working correctly.</p>
+<p>To generate this message, Docker took the following steps:</p>
+<ol>
+<li>The Docker client contacted the Docker daemon.</li>
+<li>The Docker daemon pulled the “hello-world” image from the Docker Hub.</li>
+<li>The Docker daemon created a new container from that image which runs the<br>executable that produces the output you are currently reading.</li>
+<li>The Docker daemon streamed that output to the Docker client, which sent it<br>to your terminal.</li>
+</ol>
+<p>To try something more ambitious, you can run an Ubuntu container with:<br> $ docker run -it ubuntu bash</p>
+<p>Share images, automate workflows, and more with a free Docker Hub account:<br> <a href="https://hub.docker.com" target="_blank" rel="external">https://hub.docker.com</a></p>
+<p>For more examples and ideas, visit:<br> <a href="https://docs.docker.com/userguide/" target="_blank" rel="external">https://docs.docker.com/userguide/</a></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="section">##run whalesay image  </span></div><div class="line"></div><div class="line">[<span class="string">docker/whalesya</span>](<span class="link">https://hub.docker.com/r/docker/whalesay/</span>)</div></pre></td></tr></table></figure>
+<p>[root@sinno01 ~]# docker run docker/whalesay cowsay hello-world<br>Unable to find image ‘docker/whalesay:latest’ locally<br>latest: Pulling from docker/whalesay<br>2880a3395ede: Pull complete<br>515565c29c94: Pull complete<br>98b15185dba7: Pull complete<br>2ce633e3e9c9: Pull complete<br>35217eff2e30: Pull complete<br>326bddfde6c0: Pull complete<br>3a2e7fe79da7: Pull complete<br>517de05c9075: Pull complete<br>8f17e9411cf6: Pull complete<br>ded5e192a685: Pull complete<br>Digest: sha256:178598e51a26abbc958b8a2e48825c90bc22e641de3d31e18aaf55f3258ba93b<br>Status: Downloaded newer image for docker/whalesay:latest</p>
+<hr>
+<h2 id="lt-hello-world-gt"><a href="#lt-hello-world-gt" class="headerlink" title="&lt; hello-world &gt;"></a>&lt; hello-world &gt;</h2><pre><code>\
+ \
+  \     
+                ##        .            
+          ## ## ##       ==            
+       ## ## ## ##      ===            
+   /&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;___/ ===        
+</code></pre><p>  <del>~ {</del> <del>~~ ~</del> <del>~~ ~~ ~ /  ===- ~</del><br>       _<strong>_</strong> o          <strong>/<br>        \    \        </strong>/<br>          _<strong>_____</strong>/<br>[root@sinno01 ~]#<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">更换巨鲸说的内容</div></pre></td></tr></table></figure></p>
+<p>[root@sinno01 ~]# docker run docker/whalesay cowsay i am king``</p>
+<hr>
+<h2 id="lt-i-am-king-gt"><a href="#lt-i-am-king-gt" class="headerlink" title="&lt; i am king &gt;"></a>&lt; i am king &gt;</h2><pre><code>\
+ \
+  \     
+                ##        .            
+          ## ## ##       ==            
+       ## ## ## ##      ===            
+   /&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;___/ ===        
+</code></pre><p>  <del>~ {</del> <del>~~ ~</del> <del>~~ ~~ ~ /  ===- ~</del><br>       _<strong>_</strong> o          <strong>/<br>        \    \        </strong>/<br>          _<strong>_____</strong>/<br>```</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/10/13/docker-(2)理解镜像和容器/" class="archive-article-date">
+  	<time datetime="2015-10-13T05:56:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/容器/">容器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/镜像/">镜像</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-docker-(1)安装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/13/docker-(1)安装/">docker-(1)安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://docs.docker.com/linux/started/" target="_blank" rel="external">get started with docker for linux</a></p>
+<p>安装docker </p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">[root@sinno01 ~]# yum install docker</div><div class="line">已加载插件：fastestmirror, langpacks</div><div class="line">Loading mirror speeds from cached hostfile</div><div class="line"> * base: mirrors.skyshe.cn</div><div class="line"> * elrepo: ftp.yz.yamagata-u.ac.jp</div><div class="line"> * extras: mirrors.pubyun.com</div><div class="line"> * updates: mirrors.sina.cn</div><div class="line">正在解决依赖关系</div><div class="line">--&gt; 正在检查事务</div><div class="line">---&gt; 软件包 docker.x86_64<span class="meta">.0</span><span class="meta">.1</span><span class="meta">.7</span><span class="meta">.1</span>-<span class="number">115.</span>el7 将被 安装</div><div class="line">--&gt; 正在处理依赖关系 docker-selinux &gt;= <span class="number">1.7</span><span class="meta">.1</span>-<span class="number">115.</span>el7，它被软件包 docker-<span class="number">1.7</span><span class="meta">.1</span>-<span class="number">115.</span>el7.x86_64 需要</div><div class="line">--&gt; 正在检查事务</div><div class="line">---&gt; 软件包 docker-selinux.x86_64<span class="meta">.0</span><span class="meta">.1</span><span class="meta">.7</span><span class="meta">.1</span>-<span class="number">115.</span>el7 将被 安装</div><div class="line">--&gt; 解决依赖关系完成</div><div class="line"></div><div class="line">依赖关系解决</div><div class="line"></div><div class="line">===============================================================================================================================</div><div class="line"> Package                           架构                      版本                              源                         大小</div><div class="line">===============================================================================================================================</div><div class="line">正在安装:</div><div class="line"> docker                            x86_64                    <span class="number">1.7</span><span class="meta">.1</span>-<span class="number">115.</span>el7                     extras                    <span class="number">7.0</span> M</div><div class="line">为依赖而安装:</div><div class="line"> docker-selinux                    x86_64                    <span class="number">1.7</span><span class="meta">.1</span>-<span class="number">115.</span>el7                     extras                     <span class="number">59</span> k</div><div class="line"></div><div class="line">事务概要</div><div class="line">===============================================================================================================================</div><div class="line">安装  <span class="number">1</span> 软件包 (+<span class="number">1</span> 依赖软件包)</div><div class="line"></div><div class="line">总下载量：<span class="number">7.1</span> M</div><div class="line">安装大小：<span class="number">30</span> M</div><div class="line">Is this ok [y/d/N]: y</div><div class="line">Downloading packages:</div><div class="line">(<span class="number">1</span>/<span class="number">2</span>): docker-selinux-<span class="number">1.7</span><span class="meta">.1</span>-<span class="number">115.</span>el7.x86_64.rpm                                                          |  <span class="number">59</span> kB  <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>     </div><div class="line">(<span class="number">2</span>/<span class="number">2</span>): docker-<span class="number">1.7</span><span class="meta">.1</span>-<span class="number">115.</span>el7.x86_64.rpm                                                                  | <span class="number">7.0</span> MB  <span class="number">00</span>:<span class="number">00</span>:<span class="number">20</span>     </div><div class="line">-------------------------------------------------------------------------------------------------------------------------------</div><div class="line">总计                                                                                           <span class="number">348</span> kB/s | <span class="number">7.1</span> MB  <span class="number">00</span>:<span class="number">00</span>:<span class="number">20</span>     </div><div class="line">Running transaction check</div><div class="line">Running transaction <span class="keyword">test</span></div><div class="line">Transaction <span class="keyword">test</span> succeeded</div><div class="line">Running transaction</div><div class="line">  正在安装    : docker-selinux-<span class="number">1.7</span><span class="meta">.1</span>-<span class="number">115.</span>el7.x86_64                                                                        <span class="number">1</span>/<span class="number">2</span> </div><div class="line">  正在安装    : docker-<span class="number">1.7</span><span class="meta">.1</span>-<span class="number">115.</span>el7.x86_64                                                                                <span class="number">2</span>/<span class="number">2</span> </div><div class="line">  验证中      : docker-selinux-<span class="number">1.7</span><span class="meta">.1</span>-<span class="number">115.</span>el7.x86_64                                                                        <span class="number">1</span>/<span class="number">2</span> </div><div class="line">  验证中      : docker-<span class="number">1.7</span><span class="meta">.1</span>-<span class="number">115.</span>el7.x86_64                                                                                <span class="number">2</span>/<span class="number">2</span> </div><div class="line"></div><div class="line">已安装:</div><div class="line">  docker.x86_64 <span class="number">0</span>:<span class="number">1.7</span><span class="meta">.1</span>-<span class="number">115.</span>el7                                                                                                </div><div class="line"></div><div class="line">作为依赖被安装:</div><div class="line">  docker-selinux.x86_64 <span class="number">0</span>:<span class="number">1.7</span><span class="meta">.1</span>-<span class="number">115.</span>el7                                                                                        </div><div class="line"></div><div class="line">完毕！</div><div class="line">[root@sinno01 ~]# systemctl start docker.service </div><div class="line">[root@sinno01 ~]# docker -v</div><div class="line">Docker version <span class="number">1.7</span><span class="meta">.1</span>, build 446ad9b/<span class="number">1.7</span><span class="meta">.1</span></div></pre></td></tr></table></figure>
+<p>默认安装的不是最新版本</p>
+<p>删除当前版本</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">[root@sinno01 yum.repos.d]# systemctl stop docker.service </div><div class="line">[root@sinno01 yum.repos.d]# yum remove docker</div><div class="line">已加载插件：fastestmirror, langpacks</div><div class="line">正在解决依赖关系</div><div class="line">--&gt; 正在检查事务</div><div class="line">---&gt; 软件包 docker.x86<span class="emphasis">_64.0.1.7.1-115.el7 将被 删除</span></div><div class="line">--&gt; 解决依赖关系完成</div><div class="line"></div><div class="line">依赖关系解决</div><div class="line"></div><div class="line">===============================================================================================================================</div><div class="line"> Package                     架构                        版本                               源                            大小</div><div class="line">===============================================================================================================================</div><div class="line">正在删除:</div><div class="line"><span class="code"> docker                      x86_64                      1.7.1-115.el7                      @extras                       30 M</span></div><div class="line"></div><div class="line"><span class="section">事务概要</span></div><div class="line">===============================================================================================================================</div><div class="line">移除  1 软件包</div><div class="line"></div><div class="line">安装大小：30 M</div><div class="line">是否继续？[y/N]：y</div><div class="line">Downloading packages:</div><div class="line">Running transaction check</div><div class="line">Running transaction test</div><div class="line">Transaction test succeeded</div><div class="line">Running transaction</div><div class="line"><span class="code">  正在删除    : docker-1.7.1-115.el7.x86_64                                                                                1/1 </span></div><div class="line"><span class="code">  验证中      : docker-1.7.1-115.el7.x86_64                                                                                1/1 </span></div><div class="line"></div><div class="line">删除:</div><div class="line"><span class="code">  docker.x86_64 0:1.7.1-115.el7                                                                                                </span></div><div class="line"></div><div class="line">完毕！</div></pre></td></tr></table></figure>
+<p>重新安装指定版本号</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line">[root@sinno01 yum.repos.<span class="keyword">d</span>]# yum install docker-engine-1.8.3</div><div class="line">已加载插件：fastestmirror, langpacks</div><div class="line">Loading mirror speeds from cached hostfile</div><div class="line"><span class="comment"> * base: mirrors.skyshe.cn</span></div><div class="line"><span class="comment"> * elrepo: hkg.mirror.rackspace.com</span></div><div class="line"><span class="comment"> * extras: mirrors.pubyun.com</span></div><div class="line"><span class="comment"> * updates: mirrors.sina.cn</span></div><div class="line">正在解决依赖关系</div><div class="line">--&gt; 正在检查事务</div><div class="line">---&gt; 软件包 docker-engine.x86_64.0.1.8.3-1.el7.centos 将被 安装</div><div class="line">--&gt; 解决依赖关系完成</div><div class="line"></div><div class="line">依赖关系解决</div><div class="line"></div><div class="line">===============================================================================================================================</div><div class="line"> Package                      架构                  版本                                 源                               大小</div><div class="line">===============================================================================================================================</div><div class="line">正在安装:</div><div class="line"> docker-engine                x86_64                1.8.3-1.el7.centos                   docker-main-repo                6.2 <span class="built_in">M</span></div><div class="line"></div><div class="line">事务概要</div><div class="line">===============================================================================================================================</div><div class="line">安装  1 软件包</div><div class="line"></div><div class="line">总下载量：6.2 <span class="built_in">M</span></div><div class="line">安装大小：27 <span class="built_in">M</span></div><div class="line">Is this ok [y/<span class="keyword">d</span>/<span class="keyword">N</span>]: <span class="built_in">y</span></div><div class="line">Downloading packages:</div><div class="line">docker-engine-1.8.3-1.el7.centos.x86_64.rpm                                                             | 6.2 MB  00:00:32     </div><div class="line">Running transaction check</div><div class="line">Running transaction <span class="keyword">test</span></div><div class="line">Transaction <span class="keyword">test</span> succeeded</div><div class="line">Running transaction</div><div class="line">  正在安装    : docker-engine-1.8.3-1.el7.centos.x86_64                                                                    1/1 </div><div class="line">  验证中      : docker-engine-1.8.3-1.el7.centos.x86_64                                                                    1/1 </div><div class="line"></div><div class="line">已安装:</div><div class="line">  docker-engine.x86_64 0:1.8.3-1.el7.centos                                                                                    </div><div class="line"></div><div class="line">完毕！</div><div class="line"></div><div class="line">[root@sinno01 yum.repos.<span class="keyword">d</span>]# systemctl start docker.service</div><div class="line">[root@sinno01 yum.repos.<span class="keyword">d</span>]# docker info</div><div class="line">Containers: 0</div><div class="line">Images: 0</div><div class="line">Storage Driver: devicemapper</div><div class="line"> Pool Name: docker-253:1-1442667-pool</div><div class="line"> Pool Blocksize: 65.54 kB</div><div class="line"> Backing Filesystem: extfs</div><div class="line"> Data <span class="keyword">file</span>: /dev/loop0</div><div class="line"> Metadata <span class="keyword">file</span>: /dev/loop1</div><div class="line"> Data Space Used: 1.821 GB</div><div class="line"> Data Space <span class="keyword">Total</span>: 107.4 GB</div><div class="line"> Data Space Available: 41.23 GB</div><div class="line"> Metadata Space Used: 1.479 MB</div><div class="line"> Metadata Space <span class="keyword">Total</span>: 2.147 GB</div><div class="line"> Metadata Space Available: 2.146 GB</div><div class="line"> Udev Sync Supported: true</div><div class="line"> Deferred Removal Enabled: false</div><div class="line"> Data loop <span class="keyword">file</span>: /<span class="keyword">var</span>/lib/docker/devicemapper/devicemapper/data</div><div class="line"> Metadata loop <span class="keyword">file</span>: /<span class="keyword">var</span>/lib/docker/devicemapper/devicemapper/metadata</div><div class="line"> Library <span class="keyword">Version</span>: 1.02.93-RHEL7 (2015-01-28)</div><div class="line">Execution Driver: native-0.2</div><div class="line">Logging Driver: json-<span class="keyword">file</span></div><div class="line">Kernel <span class="keyword">Version</span>: 3.10.0-229.14.1.el7.x86_64</div><div class="line">Operating System: CentOS Linux 7 (Core)</div><div class="line">CPUs: 2</div><div class="line"><span class="keyword">Total</span> <span class="keyword">Memory</span>: 1.794 GiB</div><div class="line">Name: sinno01</div><div class="line">ID: O72W:QDSC:IRWO:4A4Q:IVRF:MXDE:JFTL:LYAK:EZZY:NI4R:GOSW:5YQP</div><div class="line">WARNING: bridge-nf-call-iptables is disabled</div><div class="line">WARNING: bridge-nf-call-ip6tables is disabled</div><div class="line"></div><div class="line">[root@sinno01 yum.repos.<span class="keyword">d</span>]# docker <span class="keyword">version</span></div><div class="line">Client:</div><div class="line"> <span class="keyword">Version</span>:      1.8.3</div><div class="line"> API <span class="keyword">version</span>:  1.20</div><div class="line"> Go <span class="keyword">version</span>:   go1.4.2</div><div class="line"> Git commit:   f4bf5c7</div><div class="line"> Built:        Mon Oct 12 06:06:01 UTC 2015</div><div class="line"> OS/<span class="keyword">Arch</span>:      linux/amd64</div><div class="line"></div><div class="line">Server:</div><div class="line"> <span class="keyword">Version</span>:      1.8.3</div><div class="line"> API <span class="keyword">version</span>:  1.20</div><div class="line"> Go <span class="keyword">version</span>:   go1.4.2</div><div class="line"> Git commit:   f4bf5c7</div><div class="line"> Built:        Mon Oct 12 06:06:01 UTC 2015</div><div class="line"> OS/<span class="keyword">Arch</span>:      linux/amd64</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/10/13/docker-(1)安装/" class="archive-article-date">
+  	<time datetime="2015-10-13T05:56:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos/">centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-centos7命令模式－图形模式切换" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/13/centos7命令模式－图形模式切换/">centos7命令模式－图形模式切换</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>命令模式:  </p>
+<blockquote>
+<p>systemctl set-default multi-user.target</p>
+</blockquote>
+</li>
+<li><p>图形模式：  </p>
+<blockquote>
+<p>systemctl set-default graphical.target </p>
+</blockquote>
+</li>
+</ul>
+<p>##实践<br>切换命令模式<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root<span class="meta">@sinno</span>01 ~]# systemctl <span class="keyword">set</span>-<span class="keyword">default</span> multi-user.target</div><div class="line">rm <span class="string">'/etc/systemd/system/default.target'</span></div><div class="line">ln -s <span class="string">'/usr/lib/systemd/system/multi-user.target'</span> <span class="string">'/etc/systemd/system/</span></div></pre></td></tr></table></figure></p>
+<p>切换图形模式<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@sinno01 ~]# systemctl <span class="keyword">set</span>-default <span class="comment">graphical.target</span></div><div class="line">rm <span class="comment">'/etc/systemd/system/default.target'</span></div><div class="line">ln <span class="comment">-s</span> <span class="comment">'/usr/lib/systemd/system/graphical.target'</span> <span class="comment">'/etc/systemd/system/default.target'</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/10/13/centos7命令模式－图形模式切换/" class="archive-article-date">
+  	<time datetime="2015-10-13T05:31:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos/">centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/命令模式/">命令模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图形模式/">图形模式</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-centos7升级内核" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/13/centos7升级内核/">centos7 update kernel</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##简介<br><a href="http://elrepo.org" target="_blank" rel="external">elrepo</a>  </p>
+<blockquote>
+<p>“For the community, by the community.”<br>Welcome to ELRepo, an RPM repository for Enterprise Linux packages. ELRepo supports Red Hat Enterprise Linux (RHEL) and its derivatives (Scientific Linux, CentOS &amp; others).<br>The ELRepo Project focuses on hardware related packages to enhance your experience with Enterprise Linux. This includes filesystem drivers, graphics drivers, network drivers, sound drivers, webcam and video drivers.  </p>
+</blockquote>
+<p><a href="https://www.kernel.org/" target="_blank" rel="external">kernel</a></p>
+<blockquote>
+<p>The linux kernel archives</p>
+</blockquote>
+<p>##升级</p>
+<ol>
+<li><p>import the public key:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm --<span class="keyword">import</span> <span class="string">https:</span><span class="comment">//www.elrepo.org/RPM-GPG-KEY-elrepo.org</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>to intall ELRepo for centos7</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -Uvh <span class="string">http:</span><span class="comment">//www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>yum install kernel</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum --enablerepo=elrepo-kernel install kernel-<span class="keyword">ml</span>-devel kernel-<span class="keyword">ml</span> -<span class="built_in">y</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>设置grub启动项</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grub2-<span class="keyword">set</span>-<span class="keyword">default</span> <span class="number">0</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>重启生效</p>
+</li>
+</ol>
+<p>##实践<br><strong>centos7</strong>内核默认是 <strong>3.10</strong>  </p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">[root@sinno01 ~]# uname -<span class="built_in">r</span></div><div class="line">3.10.0-123.el7.x86_64</div><div class="line">[root@sinno01 ~]# rpm --import https:<span class="comment">//www.elrepo.org/RPM-GPG-KEY-elrepo.org</span></div><div class="line">[root@sinno01 ~]# rpm -Uvh http:<span class="comment">//www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm</span></div><div class="line">获取http:<span class="comment">//www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm</span></div><div class="line">准备中...                          ################################# [100%]</div><div class="line">正在升级/安装...</div><div class="line">   1:elrepo-release-7.0-2.el7.elrepo  ################################# [100%]</div><div class="line">[root@sinno01 ~]# yum --enablerepo=elrepo-kernel install kernel-<span class="keyword">ml</span>-devel kernel-<span class="keyword">ml</span></div><div class="line">已加载插件：fastestmirror, langpacks</div><div class="line">base                                                                                                   | 3.6 kB  00:00:00     </div><div class="line">elrepo                                                                                                 | 2.9 kB  00:00:00     </div><div class="line">elrepo-kernel                                                                                          | 2.9 kB  00:00:00     </div><div class="line">extras                                                                                                 | 3.4 kB  00:00:00     </div><div class="line">updates                                                                                                | 3.4 kB  00:00:00     </div><div class="line">(1/3): elrepo-kernel/primary_db                                                                        | 817 kB  00:00:13     </div><div class="line">(2/3): updates/7/x86_64/primary_db                                                                     | 4.0 MB  00:00:15     </div><div class="line">(3/3): elrepo/primary_db                                                                               | 322 kB  00:00:22     </div><div class="line">Loading mirror speeds from cached hostfile</div><div class="line"><span class="comment"> * base: mirrors.skyshe.cn</span></div><div class="line"><span class="comment"> * elrepo: ftp.ne.jp</span></div><div class="line"><span class="comment"> * elrepo-kernel: ftp.ne.jp</span></div><div class="line"><span class="comment"> * extras: mirrors.pubyun.com</span></div><div class="line"><span class="comment"> * updates: mirrors.sina.cn</span></div><div class="line">正在解决依赖关系</div><div class="line">--&gt; 正在检查事务</div><div class="line">---&gt; 软件包 kernel-<span class="keyword">ml</span>.x86_64.0.4.2.3-1.el7.elrepo 将被 安装</div><div class="line">---&gt; 软件包 kernel-<span class="keyword">ml</span>-devel.x86_64.0.4.2.3-1.el7.elrepo 将被 安装</div><div class="line">--&gt; 解决依赖关系完成</div><div class="line"></div><div class="line">依赖关系解决</div><div class="line"></div><div class="line">==============================================================================================================================</div><div class="line"> Package                        架构                  版本                                 源                            大小</div><div class="line">==============================================================================================================================</div><div class="line">正在安装:</div><div class="line"> kernel-<span class="keyword">ml</span>                      x86_64                4.2.3-1.el7.elrepo                   elrepo-kernel                 37 <span class="built_in">M</span></div><div class="line"> kernel-<span class="keyword">ml</span>-devel                x86_64                4.2.3-1.el7.elrepo                   elrepo-kernel                9.8 <span class="built_in">M</span></div><div class="line"></div><div class="line">事务概要</div><div class="line">==============================================================================================================================</div><div class="line">安装  2 软件包</div><div class="line"></div><div class="line">总下载量：47 <span class="built_in">M</span></div><div class="line">安装大小：204 <span class="built_in">M</span></div><div class="line">Is this ok [y/<span class="keyword">d</span>/<span class="keyword">N</span>]: <span class="built_in">y</span></div><div class="line">Downloading packages:</div><div class="line">(1/2): kernel-<span class="keyword">ml</span>-devel-4.2.3-1.el7.elrepo.x86_64.rpm                                                   | 9.8 MB  00:02:41     </div><div class="line">kernel-<span class="keyword">ml</span>-4.2.3-1.el7.elrepo.x FAILED                                                       ] 1.7 kB/s |  11 MB  06:00:06 ETA </div><div class="line">http:<span class="comment">//ftp.ne.jp/Linux/RPMS/elrepo/kernel/el7/x86_64/RPMS/kernel-ml-4.2.3-1.el7.elrepo.x86_64.rpm: [Errno 12] Timeout on http://ftp.ne.jp/Linux/RPMS/elrepo/kernel/el7/x86_64/RPMS/kernel-ml-4.2.3-1.el7.elrepo.x86_64.rpm: (28, 'Operation too slow. Less than 1000 bytes/sec transferred the last 30 seconds')</span></div><div class="line">正在尝试其它镜像。</div><div class="line">(2/2): kernel-<span class="keyword">ml</span>-4.2.3-1.el7.elrepo.x86_64.rpm                                                                                                                                       |  37 MB  00:10:52     </div><div class="line">------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</div><div class="line">总计                                                                                                                                                                         54 kB/s |  47 MB  00:14:43     </div><div class="line">Running transaction check</div><div class="line">Running transaction <span class="keyword">test</span></div><div class="line">Transaction <span class="keyword">test</span> succeeded</div><div class="line">Running transaction</div><div class="line">警告：RPM 数据库已被非 yum 程序修改。</div><div class="line">  正在安装    : kernel-<span class="keyword">ml</span>-4.2.3-1.el7.elrepo.x86_64                                                                                                                                                     1/2 </div><div class="line">  正在安装    : kernel-<span class="keyword">ml</span>-devel-4.2.3-1.el7.elrepo.x86_64                                                                                                                                               2/2 </div><div class="line">  验证中      : kernel-<span class="keyword">ml</span>-devel-4.2.3-1.el7.elrepo.x86_64                                                                                                                                               1/2 </div><div class="line">  验证中      : kernel-<span class="keyword">ml</span>-4.2.3-1.el7.elrepo.x86_64                                                                                                                                                     2/2 </div><div class="line"></div><div class="line">已安装:</div><div class="line">  kernel-<span class="keyword">ml</span>.x86_64 0:4.2.3-1.el7.elrepo                                                             kernel-<span class="keyword">ml</span>-devel.x86_64 0:4.2.3-1.el7.elrepo                                                            </div><div class="line"></div><div class="line">完毕！</div><div class="line">[root@sinno01 ~]# uname -<span class="built_in">r</span></div><div class="line">3.10.0-123.el7.x86_64  </div><div class="line">[root@sinno01 ~]#  awk -F\' '<span class="variable">$1</span>==<span class="string">"menuentry "</span> &#123;<span class="keyword">print</span> <span class="variable">$2&#125;</span>' /etc/grub2.cfg</div><div class="line">CentOS Linux (4.2.3-1.el7.elrepo.x86_64) 7 (Core)</div><div class="line">CentOS Linux, with Linux 3.10.0-123.el7.x86_64</div><div class="line">CentOS Linux, with Linux 0-rescue-da85cf4702e04f4c8a7411dbb7cd581d</div><div class="line">[root@sinno01 ~]# grub2-<span class="keyword">set</span>-default 0 </div><div class="line">[root@sinno01 ~]# uname -<span class="built_in">r</span></div><div class="line">4.2.3-1.el7.elrepo.x86_64</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/10/13/centos7升级内核/" class="archive-article-date">
+  	<time datetime="2015-10-13T03:32:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos/">centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elrepo/">elrepo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内核/">内核</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-flume learn 1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/12/flume learn 1/">flume learn (1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##简介<br><a href="http://flume.apache.org/FlumeUserGuide.html" target="_blank" rel="external">flume</a>  </p>
+<blockquote>
+<p>Apache Flume is a distributed, reliable, and available system for efficiently collecting, aggregating and moving large amounts of log data from many different sources to a centralized data store.<br>The use of Apache Flume is not only restricted to log data aggregation. Since data sources are customizable, Flume can be used to transport massive quantities of event data including but not limited to network traffic data, social-media-generated data, email messages and pretty much any data source possible.<br>Apache Flume is a top level project at the Apache Software Foundation.  </p>
+</blockquote>
+<p>flume是由三个组件组成的。<br>source-&gt;channel-&gt;sink<br>三个组件是相互独立的。  </p>
+<blockquote>
+<p>For example, an Avro source needs a hostname (or IP address) and a port number to receive data from. A memory channel can have max queue size (“capacity”), and an HDFS sink needs to know the file system URI, path to create files, frequency of file rotation (“hdfs.rollInterval”) etc. All such attributes of a component needs to be set in the properties file of the hosting Flume agent.</p>
+</blockquote>
+<p>启动第一个flume，试试。</p>
+<p>##第一个flume<br>source来之netcat<br>channel使用本地memory<br>sink为logger</p>
+<p>###配置</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/10/12/flume learn 1/" class="archive-article-date">
+  	<time datetime="2015-10-12T07:42:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-12</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flume/">flume</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-kafka源码分析环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/21/kafka源码分析环境搭建/">apache kafka 0.8.21源码分析工程搭建(IDEA)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###1.gradle安装  </p>
+<p>lizhongchendeMacBook-Pro:~ clz$ vi .bash_profile</p>
+<p>export GRADLE_HOME=/Users/clz/Downloads/itsoft/gradle-2.7</p>
+<p>export PATH=$GRADLE_HOME/bin:$PATH</p>
+<p>lizhongchendeMacBook-Pro:~ clz$ source .bash_profile<br>lizhongchendeMacBook-Pro:~ clz$ gradle -v</p>
+<p>Gradle 2.7</p>
+<p>Build time:   2015-09-14 07:26:16 UTC<br>Build number: none<br>Revision:     c41505168da69fb0650f4e31c9e01b50ffc97893</p>
+<p>Groovy:       2.3.10<br>Ant:          Apache Ant(TM) version 1.9.3 compiled on December 23 2013<br>JVM:          1.7.0_71 (Oracle Corporation 24.71-b01)<br>OS:           Mac OS X 10.10.5 x86_64</p>
+<p>###2.源码<br>kafka源码<a href="https://www.apache.org/dyn/closer.cgi?path=/kafka/0.8.2.1/kafka-0.8.2.1-src.tgz" target="_blank" rel="external">下载</a>  </p>
+<p>###3.<br>gradle idea</p>
+<p>导入</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/09/21/kafka源码分析环境搭建/" class="archive-article-date">
+  	<time datetime="2015-09-21T13:50:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-09-21</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDEA/">IDEA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Think in UML(1)－－为什么需要UML" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/13/Think in UML(1)－－为什么需要UML/">Think in UML(1)－－为什么需要UML</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##背景<br>计算机通过数据来记录这个过程的变迁。过程中每一步都会产生、修改或读取一部分数据。每一个环节完成后，数据将顺着过程链传递到下一部分。当我们需要的最终结果在数据中被反映出来，即达到预期状态的时候，我们认为这个过程结束了。  </p>
+<p>为了很好地分析这样的过程，DFD图被广泛应用。<br>DFD图表达了：<br>（从上一步）输入数据-&gt;（在这一步）功能计算-&gt;(向下一步)输出数据<br>这样一个基础单元。  </p>
+<p>随着需求越来越复杂，系统越来越庞大，功能点越来越多，一份数据经常被多个过程共享，这些过程对同一份数据的创建和读取要求越来越趋于复杂和多样，经常出现相矛盾的数据需求，因此分析和设计也变得越来越困难。（<a href="http://blog.csdn.net/turkeyzhou/article/details/5144273" target="_blank" rel="external">uc矩阵</a>）  </p>
+<p>##面向对象方法<br>面向对象（Object Oriented，简称OO）方法将世界看作一个个相互独立的对象，相互之间并无因果关系，只有在某个外力的驱动下，对象之间才会依据某种规律相互传递信息。<br>所有相互独立的对象，按规则组合起来后，就是整个世界。</p>
+<p>###特性  </p>
+<p>####从微观角度<br>这些独立对象有着一系列奇妙而古怪的特性。  </p>
+<p>#####封装<br>对象有着坚硬的外壳，从外部看来，除了它用来与外界交互的消息通道之外，对象内部就是一个黑匣子，什么也看不到。  </p>
+<p>#####聚合<br>对象可以结合在一起形成新的对象，结合后的对象具有前两者特性的总和。  </p>
+<p>#####继承<br>对象可以繁育，产下的孩子将拥有父辈全部的本领。  </p>
+<p>#####接口<br>对象有多个外贸，在不同情况下，可以展现不同的外貌，但本质只有一个。  </p>
+<p>#####多态<br>多个对象却可能长着相同的脸，但同样的脸背后却是不同的对象，它们有着不同的行为。  </p>
+<p>####从宏观角度-短视<br>对象是“短视”的，它不知道也无法理解它所处的宏观环境，也不知道它的行为会对整个宏观环境造成怎样的影响。  </p>
+<p>#####依赖<br>它只知道与它有着联系的身边的一小群伙伴。</p>
+<p>#####耦合<br>它与小伙伴们保持着信息交流的关系。</p>
+<p>####从宏观角度-自私<br>对象是“自私”的。    </p>
+<p>#####属性<br>即便在伙伴之间，每个对象也仍然顽固的保护着自己的领地。  </p>
+<p>#####方法<br>只允许其他人通过它打开的小窗口进行交流，从不允许对方进入它的领地。</p>
+<p>####物以类聚，人以群分<br>对象也喜欢群居。这些群居的对象有着一些相似的性质，它们依靠这些相似的性质来组成一个部落。</p>
+<p>#####抽象<br>对象们寻找相似性质并组成部落的过程。</p>
+<p>#####类<br>对象组成的部落。</p>
+<p>#####实例化<br>部落里每个成员既有共同的性质，又有自己的个性，我们只有把特有的个性赋给部落成员才能区分它们并使它们活动起来。</p>
+<p>#####复用<br>某些零件不是特殊的只能用于制造某个东西，它们还可以用于别的地方。</p>
+<p>####抽象层次<br>抽象可以由两个方向进行，由小及大（或称为自底向上）的抽象过程，由大及小（或称为自顶向下）的抽象过程。<br>抽象层次的好处：  </p>
+<ol>
+<li>不论在哪一个层次上，我们都只需要面对有限的复杂度和有限的对象结构，从而可以专心地了解这个层次上的对象是如何工作的。  </li>
+<li>低层次的零件更换不会影响高层次的功能。</li>
+</ol>
+<p>###面向对象的困难  </p>
+<ol>
+<li>why<br>对象是怎么被抽象出来的？现实世界和对象世界看上去差别是那么大，为什么要这么抽象而不是那么抽象呢？  </li>
+<li>how<br>对象世界由于其灵活性，可以任意组合，可是我们怎么知道某个组合就正好满足了现实世界的需求呢？什么的组合是好的，什么样的组合是差的呢？  </li>
+<li>what<br>抛开现实世界，对象世界是如此的难以理解。如果只给我一个对象组合，我怎么才能理解它表达了怎样的含义呢？</li>
+</ol>
+<p>##结尾<br>现实世界与对象世界之间存在一道鸿沟，这道鸿沟叫做抽象。<br>想要跨越这道鸿沟，我们需要：  </p>
+<ol>
+<li>一种把现实世界映射到对象世界的方法。  </li>
+<li>一种从对象世界描述现实世界的方法。  </li>
+<li>一种验证对象世界行为是否正确反映现实世界的方法。  </li>
+</ol>
+<p>UML，代表的面向对象分析设计方法正好架起了跨越这道鸿沟的桥梁。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/09/13/Think in UML(1)－－为什么需要UML/" class="archive-article-date">
+  	<time datetime="2015-09-13T12:17:06.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-09-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uml/">uml</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-风口上的猪" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/04/风口上的猪/">风口上的猪</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##背景<br>互联网金融是近期的大热点，支付宝崛起，各种网络金服拔地而起，终于也抵不住好奇看了遍，这个炙手可热的书。<br>以下是总结的思维导图  </p>
+<p><img src="http://7xk5y4.com1.z0.glb.clouddn.com/风口上的猪-互联网金融.png" alt="互联网金融"></p>
+<p><img src="http://7xk5y4.com1.z0.glb.clouddn.com/风口上的猪-金融垂直搜索-导购网站.png" alt="金融垂直搜索"></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/09/04/风口上的猪/" class="archive-article-date">
+  	<time datetime="2015-09-04T15:33:34.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-09-04</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/互联网/">互联网</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/金融/">金融</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-solr搜索解析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/01/solr搜索解析/">solr搜索解析sdk</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.背景<br>最近在做公司的公共服务项目，包括将所有产品除业务外的所有需求功能（数据分析、监控、其它服务），有些接口需要涉及的条件参数，非常多，关联表也很多。不计算关联表的分表，大概有10几张业务独立表，涉及的数据量也就更大了。</p>
+<p>光用mysql去关联查询，速度是非常慢的，要3-5秒。</p>
+<p>有些需要提供给内部人员用的数据，还好数据及时度要求不高，可以接受1小时延迟。</p>
+<p>2.解决方案<br>还好有对于处理几亿数据，1秒内响应完成的经验，这点小case完全没问题。</p>
+<p>因为及时度要求不高，那么将数据迁移到solr做层索引，再从solr进行获取就好了。<br>因为参数会变更，且数量特别多有100多个，对于懒惰的程序猿来说，以前已经写过一遍，要自己再拼写一遍SolrQuery，而且还有可能面临修改，那是绝对不行的。那么就自己再封装一层来生成SolrQuery吧，先根据业务重新定义query type，再解析生成。<br>根据业务上的搜索区分，可将条件分为以下几类：</p>
+<pre><code>public enum SolrSearchFieldType {
+
+/**
+ * 精确值
+ */
+PRECISE,
+
+/**
+ * 模糊值
+ */
+FUZZY,
+
+/**
+ * 区间开始
+ */
+INTERVAL_BEGIN,
+
+/**
+ * 区间结束
+ */
+INTERVAL_END,
+
+/**
+ * 近期时间
+ */
+RECENT_TIME,
+
+/**
+ * start
+ */
+START,
+
+/**
+ * rows
+ */
+ROWS,
+
+/**
+ * sort
+ */
+SORT;
+
+}
+</code></pre><p>再创建注解</p>
+<pre><code>@Retention(RetentionPolicy.RUNTIME)
+@Target(value = { ElementType.FIELD })
+public @interface SolrSearchField {
+
+/**
+ * 对应solr的Field
+ * 
+ * @return
+ */
+public String value();
+
+/**
+ * 查询属性类型
+ * 
+ * @return
+ */
+public SolrSearchFieldType type();
+
+}
+</code></pre><p>具体搜索条件dto加上自定义的注解  </p>
+<pre><code>public class NewcrmUserInfoSearchDto {
+
+
+@SolrSearchField(value = &quot;nick_s&quot;, type = SolrSearchFieldType.PRECISE)
+private String nick;
+
+ /**
+ * 店铺等级
+ */
+@SolrSearchField(value = &quot;shopLevel_i&quot;, type = SolrSearchFieldType.INTERVAL_BEGIN)
+private Integer shopLevelBegin;
+
+@SolrSearchField(value = &quot;shopLevel_i&quot;, type = SolrSearchFieldType.INTERVAL_END)
+private Integer shopLevelEnd;
+
+/**
+ * 对应当前页，需要根据pageSize计算出start
+ */
+@SolrSearchField(value = &quot;start&quot;, type = SolrSearchFieldType.START)
+private Integer curPage;
+
+@SolrSearchField(value = &quot;rows&quot;, type = SolrSearchFieldType.ROWS)
+private Integer pageSize;
+
+/**
+ * 列名:desc或asc;列名:desc或asc;
+ */
+@SolrSearchField(value = &quot;sort&quot;, type = SolrSearchFieldType.SORT)
+private String sort;
+}
+</code></pre><p>最后一步对dto进行反射获取注解，解析生成SolrQuery就哦了。</p>
+<p>偷懒是程序猿高尚的美德。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/09/01/solr搜索解析/" class="archive-article-date">
+  	<time datetime="2015-08-31T16:11:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-09-01</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sdk/">sdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/solr/">solr</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索/">搜索</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-开发美丽说开放平台top版sdk" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/26/开发美丽说开放平台top版sdk/">开发美丽说开放平台top版sdk思路</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.背景<br>最近公司在做一个进货平台项目，可以让卖家从平台获取宝贝信息，将宝贝信息一键发布到各大卖家平台。如淘宝、阿里、京东、拍拍、苏宁等。</p>
+<p>淘宝、阿里、京东、拍拍、苏宁平台都基本成熟，有sdk和云主机（都跟淘宝的top平台类似）</p>
+<p>美丽说貌似刚起步，oauth体系，基本api已经开放，但是sdk没有发布出来。</p>
+<p>接口形式都跟top平台类似。估计也是淘宝的团队出来的人开放的吧。</p>
+<p>项目在急，总不能等着美丽说发布sdk吧，那么自己动手丰衣足食，将top的sdk迁移到美丽说好了。</p>
+<p>2.开放平台概述<br>首先开放平台可分为3类对象：使用者，平台，isv<br>平台的使用者需要通过平台授权给isv(无论有偿无偿都需要订购isv的应用)，isv得到使用者的授权(sessionkey)后，可以通过该sessionkey在平台进行一些平台开放的操作。如对宝贝、订单进行管理或分析帮组使用者更高效的处理日常事务。</p>
+<p>3.sdk 方案</p>
+<p>3.1<br>oauth是全世界通用，先得到code，再得到token。封装2个请求轻松取得用户的授权。</p>
+<p>3.2<br>api调用其实简单的来说就是一个http请求，将平台需要的参数拼接起来进行请求，然后平台收到请求进行处理，调用者接收平台的返回值进行再处理。</p>
+<p>讲整个过程抽象出3个对象<br>request：请求包含请求的所有参数<br>response：请求后的结果<br>client：用request向平台请求并得到response</p>
+<p>request －》 client －》response</p>
+<p>3.3数据校验<br>平台的接口对参数有一些要求，所以在client在获得request时，调用接口前，要对特定的参数进行check，如果不符合平台接口要求，则直接抛出错误，防止不必要的api调用。所有参数都符合要求后，再根据平台的要求生产sign(平台对请求的安全性校验)一并传入api调用参数中。</p>
+<p>完成以上所有步骤，美丽说的开放平台sdk便已经完成。<br>思想有了，其它平台也一样能轻松搞定。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/08/26/开发美丽说开放平台top版sdk/" class="archive-article-date">
+  	<time datetime="2015-08-26T14:59:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-08-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sdk/">sdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/top/">top</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开放平台/">开放平台</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/美丽说/">美丽说</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+    </nav>
+  
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 lizhong.chen
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/"
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/忠忠闲谈/" style="font-size: 11.67px;">忠忠闲谈</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">圆梦此生无憾</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

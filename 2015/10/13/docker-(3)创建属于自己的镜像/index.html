@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>docker-(3)创建属于自己的镜像 | 风车王国</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="build your own image
+##背景123如果你不知道该说什么，你想让巨鲸自己说。1. 写一个dockerfile
+[root@sinno01 docker]# mkdir mydockerbuild[root@sinno01 docker]# cd mydockerbuild/[root@sinno01 mydockerbuild]# ls[root@sinno01 mydocke">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker-(3)创建属于自己的镜像">
+<meta property="og:url" content="http://clz619.github.io/2015/10/13/docker-(3)创建属于自己的镜像/index.html">
+<meta property="og:site_name" content="风车王国">
+<meta property="og:description" content="build your own image
+##背景123如果你不知道该说什么，你想让巨鲸自己说。1. 写一个dockerfile
+[root@sinno01 docker]# mkdir mydockerbuild[root@sinno01 docker]# cd mydockerbuild/[root@sinno01 mydockerbuild]# ls[root@sinno01 mydocke">
+<meta property="og:updated_time" content="2016-09-15T09:28:46.439Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker-(3)创建属于自己的镜像">
+<meta name="twitter:description" content="build your own image
+##背景123如果你不知道该说什么，你想让巨鲸自己说。1. 写一个dockerfile
+[root@sinno01 docker]# mkdir mydockerbuild[root@sinno01 docker]# cd mydockerbuild/[root@sinno01 mydockerbuild]# ls[root@sinno01 mydocke">
+  
+    <link rel="alternative" href="/atom.xml" title="风车王国" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <script src="/style.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/images/ico.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">lizhong.chen</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">每天进步一点点</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/忠忠闲谈">忠忠闲谈</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/clz619" title="github">github</a>
+		        
+					<a class="mail" target="_blank" href="mailto:admin@chenlizhong.cn" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">lizhong.chen</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/images/ico.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">lizhong.chen</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">每天进步一点点</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/忠忠闲谈">忠忠闲谈</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/clz619" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:admin@chenlizhong.cn" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-docker-(3)创建属于自己的镜像" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      docker-(3)创建属于自己的镜像
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://docs.docker.com/linux/step_four/" target="_blank" rel="external">build your own image</a></p>
+<p>##背景<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">如果你不知道该说什么，你想让巨鲸自己说。</div><div class="line"></div><div class="line">1. 写一个dockerfile</div></pre></td></tr></table></figure></p>
+<p>[root@sinno01 docker]# mkdir mydockerbuild<br>[root@sinno01 docker]# cd mydockerbuild/<br>[root@sinno01 mydockerbuild]# ls<br>[root@sinno01 mydockerbuild]# vi Dockerfile<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">2. </span>Dockerfile内容</div></pre></td></tr></table></figure></p>
+<p>FROM docker/whalesay:latest<br>RUN apt-get -y update &amp;&amp; apt-get install -y fortunes<br>CMD /usr/games/fortune -a | cowsay<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">3. </span>根据Dockerfile生成镜像</div></pre></td></tr></table></figure></p>
+<p>[root@sinno01 mydockerbuild]# docker build -t docker-whale .<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">4. </span>执行新建的docker-whale</div><div class="line"><span class="bullet">5. </span></div><div class="line"></div><div class="line"></div><div class="line"><span class="section">##备注</span></div><div class="line"></div><div class="line">[<span class="string">fortunes</span>](<span class="link">http://blog.fens.me/r-fortunes/</span>)  </div><div class="line">&gt;fortunes库是一个R语言的语录集，截止到2012年4月，一共总结了316条R-help的留言，这些都是R语言智慧的精华。让R语言的后辈使用者，可以更了解R语言的本身，了解R的精神。  </div><div class="line">&gt;fortunes项目发布页：<span class="xml"><span class="tag">&lt;<span class="name">http:</span>//<span class="attr">cran.r-project.org</span>/<span class="attr">web</span>/<span class="attr">packages</span>/<span class="attr">fortunes</span>/<span class="attr">index.html</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>[root@sinno01 docker]# mkdir mydockerbuild<br>[root@sinno01 docker]# cd mydockerbuild/<br>[root@sinno01 mydockerbuild]# ls<br>[root@sinno01 mydockerbuild]# vi Dockerfile<br>[root@sinno01 mydockerbuild]# ls<br>Dockerfile<br>[root@sinno01 mydockerbuild]# docker build -t docker-whale .<br>Sending build context to Docker daemon 2.048 kB<br>Step 0 : FROM docker/whalesay:latest<br> —&gt; ded5e192a685<br>Step 1 : RUN apt-get -y update &amp;&amp; apt-get install -y fortunes<br> —&gt; Running in 9b27c87b4fd4<br>Ign <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty InRelease<br>Get:1 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates InRelease [64.4 kB]<br>Get:2 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security InRelease [64.4 kB]<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty Release.gpg<br>Get:3 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/main Sources [299 kB]<br>Get:4 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/restricted Sources [4513 B]<br>Get:5 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/universe Sources [176 kB]<br>Get:6 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/main amd64 Packages [790 kB]<br>Get:7 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/restricted amd64 Packages [22.7 kB]<br>Get:8 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/universe amd64 Packages [420 kB]<br>Get:9 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/main Sources [122 kB]<br>Get:10 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/restricted Sources [3230 B]<br>Get:11 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/universe Sources [35.4 kB]<br>Get:12 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/main amd64 Packages [440 kB]<br>Get:13 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/restricted amd64 Packages [19.4 kB]<br>Get:14 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/universe amd64 Packages [151 kB]<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty Release<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/main Sources<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/restricted Sources<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/universe Sources<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/main amd64 Packages<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/restricted amd64 Packages<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/universe amd64 Packages<br>Fetched 2612 kB in 1min 52s (23.3 kB/s)<br>Reading package lists…<br>Reading package lists…<br>Building dependency tree…<br>Reading state information…<br>The following extra packages will be installed:<br>  fortune-mod fortunes-min librecode0<br>Suggested packages:<br>  x11-utils bsdmainutils<br>The following NEW packages will be installed:<br>  fortune-mod fortunes fortunes-min librecode0<br>0 upgraded, 4 newly installed, 0 to remove and 46 not upgraded.<br>Need to get 1961 kB of archives.<br>After this operation, 4817 kB of additional disk space will be used.<br>Get:1 <a href="http://archive.ubuntu.com/ubuntu/" target="_blank" rel="external">http://archive.ubuntu.com/ubuntu/</a> trusty/main librecode0 amd64 3.6-21 [771 kB]<br>Get:2 <a href="http://archive.ubuntu.com/ubuntu/" target="_blank" rel="external">http://archive.ubuntu.com/ubuntu/</a> trusty/universe fortune-mod amd64 1:1.99.1-7 [39.5 kB]<br>Get:3 <a href="http://archive.ubuntu.com/ubuntu/" target="_blank" rel="external">http://archive.ubuntu.com/ubuntu/</a> trusty/universe fortunes-min all 1:1.99.1-7 [61.8 kB]<br>Get:4 <a href="http://archive.ubuntu.com/ubuntu/" target="_blank" rel="external">http://archive.ubuntu.com/ubuntu/</a> trusty/universe fortunes all 1:1.99.1-7 [1089 kB]<br>debconf: unable to initialize frontend: Dialog<br>debconf: (TERM is not set, so the dialog frontend is not usable.)<br>debconf: falling back to frontend: Readline<br>debconf: unable to initialize frontend: Readline<br>debconf: (This frontend requires a controlling tty.)<br>debconf: falling back to frontend: Teletype<br>dpkg-preconfigure: unable to re-open stdin:<br>Fetched 1961 kB in 19s (101 kB/s)<br>Selecting previously unselected package librecode0:amd64.<br>(Reading database … 13116 files and directories currently installed.)<br>Preparing to unpack …/librecode0_3.6-21_amd64.deb …<br>Unpacking librecode0:amd64 (3.6-21) …<br>Selecting previously unselected package fortune-mod.<br>Preparing to unpack …/fortune-mod_1%3a1.99.1-7_amd64.deb …<br>Unpacking fortune-mod (1:1.99.1-7) …<br>Selecting previously unselected package fortunes-min.<br>Preparing to unpack …/fortunes-min_1%3a1.99.1-7_all.deb …<br>Unpacking fortunes-min (1:1.99.1-7) …<br>Selecting previously unselected package fortunes.<br>Preparing to unpack …/fortunes_1%3a1.99.1-7_all.deb …<br>Unpacking fortunes (1:1.99.1-7) …<br>Setting up librecode0:amd64 (3.6-21) …<br>Setting up fortune-mod (1:1.99.1-7) …<br>Setting up fortunes-min (1:1.99.1-7) …<br>Setting up fortunes (1:1.99.1-7) …<br>Processing triggers for libc-bin (2.19-0ubuntu6.6) …<br> —&gt; 2c15b31466da<br>Removing intermediate container 9b27c87b4fd4<br>Step 2 : CMD /usr/games/fortune -a | cowsay<br> —&gt; Running in 48f098e4fef5<br> —&gt; 6c94d2cebae0<br>Removing intermediate container 48f098e4fef5<br>Successfully built 6c94d2cebae0<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">查看镜像</div></pre></td></tr></table></figure></p>
+<p>[root@sinno01 mydockerbuild]# docker images<br>REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE<br>docker-whale        latest              6c94d2cebae0        2 minutes ago       255.3 MB<br>centos              latest              0f73ae75014f        5 weeks ago         172.3 MB</p>
+<p><none>              <none>              283f8fff4e73        5 weeks ago         172.3 MB<br>hello-world         latest              8889088cb38d        9 weeks ago         960 B<br>docker/whalesay     latest              ded5e192a685        4 months ago        247 MB</none></none></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">执行新建的docker-whale</div></pre></td></tr></table></figure>
+<p>[root@sinno01 mydockerbuild]# docker run docker-whale</p>
+<hr>
+<h2 id="lt-Hailing-frequencies-open-Captain-gt"><a href="#lt-Hailing-frequencies-open-Captain-gt" class="headerlink" title="&lt; Hailing frequencies open, Captain. &gt;"></a>&lt; Hailing frequencies open, Captain. &gt;</h2><pre><code>\
+ \
+  \     
+                ##        .            
+          ## ## ##       ==            
+       ## ## ## ##      ===            
+   /&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;___/ ===        
+</code></pre><p>  <del>~ {</del> <del>~~ ~</del> <del>~~ ~~ ~ /  ===- ~</del><br>       _<strong>_</strong> o          <strong>/<br>        \    \        </strong>/<br>          _<strong>_____</strong>/<br>[root@sinno01 mydockerbuild]# docker run docker-whale</p>
+<hr>
+<p>/ <overfiend> penis jokes are okay in \</overfiend></p>
+<h2 id="mixed-company-VMS-is-NOT"><a href="#mixed-company-VMS-is-NOT" class="headerlink" title="\ mixed company. VMS is NOT!!!        /"></a>\ mixed company. VMS is NOT!!!        /</h2><pre><code>\
+ \
+  \     
+                ##        .            
+          ## ## ##       ==            
+       ## ## ## ##      ===            
+   /&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;___/ ===        
+</code></pre><p>  <del>~ {</del> <del>~~ ~</del> <del>~~ ~~ ~ /  ===- ~</del><br>       _<strong>_</strong> o          <strong>/<br>        \    \        </strong>/<br>          _<strong>_____</strong>/   </p>
+<p>```</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/10/13/docker-(3)创建属于自己的镜像/" class="archive-article-date">
+  	<time datetime="2015-10-13T09:22:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/镜像/">镜像</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2015/10/13/docker-(4)标记、推送、拖取镜像/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          docker-(4)标记、推送、拖取镜像
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/13/docker-(2)理解镜像和容器/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker-(2)理解镜像和容器</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="docker-(3)创建属于自己的镜像" data-title="docker-(3)创建属于自己的镜像" data-url="http://clz619.github.io/2015/10/13/docker-(3)创建属于自己的镜像/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"clz619"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 lizhong.chen
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/"
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/忠忠闲谈/" style="font-size: 11.67px;">忠忠闲谈</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">圆梦此生无憾</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
