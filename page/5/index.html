@@ -32,7 +32,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img src="/images/ico.jpg" class="js-avatar">
+			<img src="/images/luf.jpg" class="js-avatar">
 			
 		</a>
 
@@ -95,7 +95,7 @@
 		<header id="header" class="inner">
 			<div class="profilepic">
 				
-					<img src="/images/ico.jpg" class="js-avatar">
+					<img src="/images/luf.jpg" class="js-avatar">
 				
 			</div>
 			<hgroup>
@@ -128,90 +128,6 @@
 
       <div class="body-wrap">
         
-  
-    <article id="post-docker-(2)理解镜像和容器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/13/docker-(2)理解镜像和容器/">docker-(2)理解镜像和容器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://docs.docker.com/linux/step_two/" target="_blank" rel="external">learn about image&amp;containers</a></p>
-<p>As the last step in your installation, you ran the <figure class="highlight docker"><figcaption><span>run hello-world command```. With this one command, you completed the core tasks to using Docker. The command you ran had three parts.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">![dockerCommand](http://docs.docker.com/tutimg/container_explainer.png)</div><div class="line"> </div><div class="line">A container is a stripped-to-basics version of a Linux operating system.   </div><div class="line">An image is software you load into a container.   </div><div class="line">When you ran the command, the Docker software:</div><div class="line"></div><div class="line">* checked to see if you had the hello-world software image</div><div class="line">* downloaded the image <span class="keyword">from</span> the Docker Hub (more about the hub later)</div><div class="line">* loaded the image into the container and “ran” it</div><div class="line"></div><div class="line">Depending on how it was built, an image might <span class="keyword">run</span> a simple, single command and then exit. This is what Hello-World did.</div><div class="line"></div><div class="line">A Docker image, though, is capable of much more. An image can start software as complex as a database, wait for you (or someone else) to <span class="keyword">add</span> data, store the data for later use, and then wait for the next person.</div><div class="line"></div><div class="line">Who built the hello-world software image though? In this case, Docker did but anyone can. Docker lets people (or companies) create and share software through Docker images. Using Docker, you don’t have to worry about whether your computer can <span class="keyword">run</span> the software in a Docker image — a Docker container can always <span class="keyword">run</span> it.</div></pre></td></tr></table></figure></p>
-<p>[root@sinno01 docker]# docker run hello-world<br>Unable to find image ‘hello-world:latest’ locally<br>latest: Pulling from library/hello-world<br>03818fa0f871: Pull complete<br>8889088cb38d: Pull complete<br>Digest: sha256:a68868bfe696c00866942e8f5ca39e3e31b79c1e50feaee4ce5e28df2f051d5c<br>Status: Downloaded newer image for hello-world:latest</p>
-<p>Hello from Docker.<br>This message shows that your installation appears to be working correctly.</p>
-<p>To generate this message, Docker took the following steps:</p>
-<ol>
-<li>The Docker client contacted the Docker daemon.</li>
-<li>The Docker daemon pulled the “hello-world” image from the Docker Hub.</li>
-<li>The Docker daemon created a new container from that image which runs the<br>executable that produces the output you are currently reading.</li>
-<li>The Docker daemon streamed that output to the Docker client, which sent it<br>to your terminal.</li>
-</ol>
-<p>To try something more ambitious, you can run an Ubuntu container with:<br> $ docker run -it ubuntu bash</p>
-<p>Share images, automate workflows, and more with a free Docker Hub account:<br> <a href="https://hub.docker.com" target="_blank" rel="external">https://hub.docker.com</a></p>
-<p>For more examples and ideas, visit:<br> <a href="https://docs.docker.com/userguide/" target="_blank" rel="external">https://docs.docker.com/userguide/</a></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="section">##run whalesay image  </span></div><div class="line"></div><div class="line">[<span class="string">docker/whalesya</span>](<span class="link">https://hub.docker.com/r/docker/whalesay/</span>)</div></pre></td></tr></table></figure>
-<p>[root@sinno01 ~]# docker run docker/whalesay cowsay hello-world<br>Unable to find image ‘docker/whalesay:latest’ locally<br>latest: Pulling from docker/whalesay<br>2880a3395ede: Pull complete<br>515565c29c94: Pull complete<br>98b15185dba7: Pull complete<br>2ce633e3e9c9: Pull complete<br>35217eff2e30: Pull complete<br>326bddfde6c0: Pull complete<br>3a2e7fe79da7: Pull complete<br>517de05c9075: Pull complete<br>8f17e9411cf6: Pull complete<br>ded5e192a685: Pull complete<br>Digest: sha256:178598e51a26abbc958b8a2e48825c90bc22e641de3d31e18aaf55f3258ba93b<br>Status: Downloaded newer image for docker/whalesay:latest</p>
-<hr>
-<h2 id="lt-hello-world-gt"><a href="#lt-hello-world-gt" class="headerlink" title="&lt; hello-world &gt;"></a>&lt; hello-world &gt;</h2><pre><code>\
- \
-  \     
-                ##        .            
-          ## ## ##       ==            
-       ## ## ## ##      ===            
-   /&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;___/ ===        
-</code></pre><p>  <del>~ {</del> <del>~~ ~</del> <del>~~ ~~ ~ /  ===- ~</del><br>       _<strong>_</strong> o          <strong>/<br>        \    \        </strong>/<br>          _<strong>_____</strong>/<br>[root@sinno01 ~]#<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">更换巨鲸说的内容</div></pre></td></tr></table></figure></p>
-<p>[root@sinno01 ~]# docker run docker/whalesay cowsay i am king``</p>
-<hr>
-<h2 id="lt-i-am-king-gt"><a href="#lt-i-am-king-gt" class="headerlink" title="&lt; i am king &gt;"></a>&lt; i am king &gt;</h2><pre><code>\
- \
-  \     
-                ##        .            
-          ## ## ##       ==            
-       ## ## ## ##      ===            
-   /&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;___/ ===        
-</code></pre><p>  <del>~ {</del> <del>~~ ~</del> <del>~~ ~~ ~ /  ===- ~</del><br>       _<strong>_</strong> o          <strong>/<br>        \    \        </strong>/<br>          _<strong>_____</strong>/<br>```</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2015/10/13/docker-(2)理解镜像和容器/" class="archive-article-date">
-  	<time datetime="2015-10-13T05:56:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-13</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/容器/">容器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/镜像/">镜像</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
   
     <article id="post-docker-(1)安装" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -863,6 +779,61 @@ private String sort;
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sdk/">sdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/top/">top</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开放平台/">开放平台</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/美丽说/">美丽说</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-工作四年感想" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/23/工作四年感想/">工作四年感想</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>工作四年，从码农做到了主管。</p>
+<p>能够单纯的编码是件多么快乐的事啊。</p>
+<p>要设计开发文档，控制进度，要教育开发人员，还要跟其他部门沟通解决问题，工作时间自己开发的时间并不多。</p>
+<p>难点：<br>1.开发人员很难成长，很多自己十几分钟写完的，让开发人员去，半天也弄不好，还出一大堆问题，关键是相同的问题。最后还得自己去完成，完全浪费时间。</p>
+<p>2.招人难，培养起来了，又会跳槽。。。</p>
+<p>3.其他部门干涉。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/08/23/工作四年感想/" class="archive-article-date">
+  	<time datetime="2015-08-23T15:13:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-08-23</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工作感想/">工作感想</a></li></ul>
 	</div>
 
       

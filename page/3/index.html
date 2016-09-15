@@ -32,7 +32,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img src="/images/ico.jpg" class="js-avatar">
+			<img src="/images/luf.jpg" class="js-avatar">
 			
 		</a>
 
@@ -95,7 +95,7 @@
 		<header id="header" class="inner">
 			<div class="profilepic">
 				
-					<img src="/images/ico.jpg" class="js-avatar">
+					<img src="/images/luf.jpg" class="js-avatar">
 				
 			</div>
 			<hgroup>
@@ -128,72 +128,6 @@
 
       <div class="body-wrap">
         
-  
-    <article id="post-sinno-framework(4)--aop设计" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/13/sinno-framework(4)--aop设计/">sinno-framework(4)--aop设计</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>sinno-framework</strong> : <a href="https://github.com/clz619/sinno-framework" target="_blank" rel="external">https://github.com/clz619/sinno-framework</a></p>
-<p>##概念<br>AOP(Aspect Oriented Programming)，面向切面编程。  </p>
-<p>可以通过预编译方式和运行期动态代理实现在不修改源代码的情况下给程序动态统一添加功能的一种技术。</p>
-<p>在spring中提供了面向切面编程的丰富支持，允许通过分离应用的业务逻辑与系统级服务（日志记录，事务管理）进行内聚性的开发。  </p>
-<p>应用对象只实现它们应该做的–完成业务逻辑–仅此而已。它们不负责其它系统级关注点，例如日志或事务支持。  </p>
-<p>如果说面向对象编程是关注将需求功能划分为不同的并且相对独立，封装良好的类，并让它们有着属于自己的行为，依靠继承和多态等来定义彼此的关系的话；那么面向切面编程则是希望能够将通用需求功能从不相关的类当中分离出来，能够使得很多类共享一个行为，一旦发生变化，不必修改很多类，而只需要修改这个行为即可。  </p>
-<p>##sinno AOP设计</p>
-<p>以支持数据库事务为例：  </p>
-<ol>
-<li>设定AOP注解  </li>
-<li>设置代理模版  </li>
-<li>实现数据库代理代码  </li>
-<li>设置切点</li>
-<li>在IOC前，将切点类重新生成加强后的代理类实例(原始类包含代理列表)，重新设置BeanMap该类与该代理类实例的关系映射表  </li>
-</ol>
-<p>注解：<br>@Aspect：标示切面注解</p>
-<p>@Transaction：标示该方法下的数据库更新操作支持事务，所有操作都在一个事务下</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/01/13/sinno-framework(4)--aop设计/" class="archive-article-date">
-  	<time datetime="2016-01-13T14:02:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-01-13</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aop/">aop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sinno/">sinno</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
   
     <article id="post-sinno-framework(3)--ioc设计" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -803,6 +737,70 @@
       
       <a href="/2015/11/26/XSD(3)--属性/" class="archive-article-date">
   	<time datetime="2015-11-26T11:10:53.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-11-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xsd/">xsd</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-XSD(2)--基础元素" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/26/XSD(2)--基础元素/">XSD(2)--基础元素</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>定义元素</p>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;xs:element name=<span class="string">"name"</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">"xs:string"</span> /&gt;</div></pre></td></tr></table></figure>
+<p>最常用的类型:  </p>
+<ul>
+<li>xs:string  </li>
+<li>xs:decimal  </li>
+<li>xs:integer  </li>
+<li>xs:boolean  </li>
+<li>xs:date  </li>
+<li>xs:time  </li>
+</ul>
+<p><strong>default</strong>定义元素的默认值：</p>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;xs:element name=<span class="string">"color"</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">"xs:string"</span> <span class="keyword">default</span>=<span class="string">"red"</span> /&gt;</div></pre></td></tr></table></figure>
+<p><strong>fixed</strong>固定值会自动分配给元素，并且无法规定另外一个值</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="symbol">xs:el</span>ement name=<span class="string">"color"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span> <span class="built_in">fixed</span>=<span class="string">"red"</span> /&gt;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/11/26/XSD(2)--基础元素/" class="archive-article-date">
+  	<time datetime="2015-11-26T10:50:53.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-11-26</time>
 </a>
       
 	<div class="article-tag tagcloud">

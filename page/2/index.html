@@ -32,7 +32,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img src="/images/ico.jpg" class="js-avatar">
+			<img src="/images/luf.jpg" class="js-avatar">
 			
 		</a>
 
@@ -95,7 +95,7 @@
 		<header id="header" class="inner">
 			<div class="profilepic">
 				
-					<img src="/images/ico.jpg" class="js-avatar">
+					<img src="/images/luf.jpg" class="js-avatar">
 				
 			</div>
 			<hgroup>
@@ -128,65 +128,6 @@
 
       <div class="body-wrap">
         
-  
-    <article id="post-jvm(5)--链接" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/10/jvm(5)--链接/">jvm(5)--链接</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##链接(Linking)<br><strong>链接</strong>类或接口包括<strong>验证</strong>和<strong>准备</strong>类或接口、它的直接父类、它的直接父接口、它的元素类型（如果是一个数组类型）及其它必要的动作。而解析这个类或接口中的符号引用是链接过程中可选的部分。  </p>
-<p>在类或接口被链接之前，它必须是被成功地加载过。<br>在类或接口初始化之前，它必须是被成功的验证及准备过。<br>程序的直接或间接行为可能会导致链接发生，链接过程中检查到的错误应该在请求链接的程序处被抛出。  </p>
-<p>###验证(Verification)<br>验证阶段用于确保类或接口的二进制表示结构上是正确的。验证过程可能会导致某些额外的类和接口被加载进来，但不应该会导致它们也需要验证或准备。  </p>
-<p>如果类或接口的二进制表示不能满足jvm代码限制中描述的静态或结构上的约束，那就必须在导致验证发生的程序调用处被抛出VerityError异常。  </p>
-<p>如果jvm尝试验证类或接口，却因为LinkageError或其子类的实例而导致验证失败，那么随后对于此类或接口的验证尝试总是会因为第一次尝试失败的同样原因而失败。</p>
-<p>###准备(Preparation)<br>准备阶段的任务是为类或接口的静态字段分配空间，并用默认值初始化这些字段。这个阶段不会执行任何的虚拟机字节码指令。在初始化阶段会显示的初始化器来初始化这些静态字段，所以准备阶段不做这些事情。  </p>
-<p>在类的对象创建之后的任何时间，都可以进行准备阶段，但它得确保一定要在初始化阶段开始前完成。</p>
-<p>###解析(Resolution)<br>解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程。  </p>
-<p>符号引用(Symbolic References)：符号引用以一组符号来描述所引用的目标，符号可以是任何形式的字面量，只要使用时能无歧义地定位到目标即可。符号引用与虚拟机实现的内存布局无关，引用的目标并不一定已经加载到内存中。各种虚拟机实现的内存布局可以各不相同，但是它们能接受的符号引用必须都是一致的，因为符号引用的字面量形式明确定义在jvm规范的Class文件格式中。  </p>
-<p>直接引用(Direct References)：直接引用可以是直接指向目标的指针、相对偏移量或是一个能间接定位到目标的句柄。直接引用是和虚拟机实现的内存布局相关的，同一个符号引用在不同虚拟机实例上翻译出来的直接引用一般不会相同。如果有了直接引用，那引用的目标必定已经在内存中存在。  </p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/03/10/jvm(5)--链接/" class="archive-article-date">
-  	<time datetime="2016-03-10T06:51:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-10</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/">jvm</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
   
     <article id="post-jvm(4)--创建和加载" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -889,6 +830,72 @@ public static final String LOCATOR_FACTORY_KEY_PARAM = &quot;parentContextKey&qu
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Aware/">Aware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码/">源码</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-sinno-framework(4)--aop设计" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/13/sinno-framework(4)--aop设计/">sinno-framework(4)--aop设计</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>sinno-framework</strong> : <a href="https://github.com/clz619/sinno-framework" target="_blank" rel="external">https://github.com/clz619/sinno-framework</a></p>
+<p>##概念<br>AOP(Aspect Oriented Programming)，面向切面编程。  </p>
+<p>可以通过预编译方式和运行期动态代理实现在不修改源代码的情况下给程序动态统一添加功能的一种技术。</p>
+<p>在spring中提供了面向切面编程的丰富支持，允许通过分离应用的业务逻辑与系统级服务（日志记录，事务管理）进行内聚性的开发。  </p>
+<p>应用对象只实现它们应该做的–完成业务逻辑–仅此而已。它们不负责其它系统级关注点，例如日志或事务支持。  </p>
+<p>如果说面向对象编程是关注将需求功能划分为不同的并且相对独立，封装良好的类，并让它们有着属于自己的行为，依靠继承和多态等来定义彼此的关系的话；那么面向切面编程则是希望能够将通用需求功能从不相关的类当中分离出来，能够使得很多类共享一个行为，一旦发生变化，不必修改很多类，而只需要修改这个行为即可。  </p>
+<p>##sinno AOP设计</p>
+<p>以支持数据库事务为例：  </p>
+<ol>
+<li>设定AOP注解  </li>
+<li>设置代理模版  </li>
+<li>实现数据库代理代码  </li>
+<li>设置切点</li>
+<li>在IOC前，将切点类重新生成加强后的代理类实例(原始类包含代理列表)，重新设置BeanMap该类与该代理类实例的关系映射表  </li>
+</ol>
+<p>注解：<br>@Aspect：标示切面注解</p>
+<p>@Transaction：标示该方法下的数据库更新操作支持事务，所有操作都在一个事务下</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/01/13/sinno-framework(4)--aop设计/" class="archive-article-date">
+  	<time datetime="2016-01-13T14:02:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-01-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aop/">aop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sinno/">sinno</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
 	</div>
 
       
