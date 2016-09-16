@@ -129,6 +129,85 @@
       <div class="body-wrap">
         
   
+    <article id="post-XSD(3)--属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/26/XSD(3)--属性/">XSD(3)--属性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>简易元素无法拥有属性。<br>属性本身总是作为简易类型被声明。  </p>
+<p>假如某个元素拥有属性，它就会被当作某种复合类型。  </p>
+<p>在此处，xxx 指属性名称，yyy 则规定属性的数据类型。XML Schema 拥有很多内建的数据类型。</p>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;attribute name=<span class="string">"xxx"</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">"yyy"</span>/&gt;</div></pre></td></tr></table></figure>
+<p>最常用的类型是：  </p>
+<ul>
+<li>xs:string  </li>
+<li>xs:decimal  </li>
+<li>xs:integer  </li>
+<li>xs:boolean  </li>
+<li>xs:date  </li>
+<li>xs:time  </li>
+</ul>
+<p>这是带有属性的 XML 元素：  </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">lastname</span> <span class="attr">lang</span>=<span class="string">"EN"</span>&gt;</span>Smith<span class="tag">&lt;/<span class="name">lastname</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这是对应的属性定义：</p>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;xs:attribute name=<span class="string">"lang"</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">"xs:string"</span>/&gt;</div></pre></td></tr></table></figure>
+<h2 id="属性的默认值和固定值"><a href="#属性的默认值和固定值" class="headerlink" title="属性的默认值和固定值"></a>属性的默认值和固定值</h2><p><strong>属性可拥有指定的默认值或固定值。</strong><br>当没有其他的值被规定时，默认值就会自动分配给元素。<br>在下面的例子中，缺省值是 “EN”：</p>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;xs:attribute name=<span class="string">"lang"</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">"xs:string"</span> <span class="keyword">default</span>=<span class="string">"EN"</span>/&gt;</div></pre></td></tr></table></figure>
+<p>固定值同样会自动分配给元素，并且您无法规定另外的值。<br>在下面的例子中，固定值是 “EN”：</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="symbol">xs:at</span>tribute name=<span class="string">"lang"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span> <span class="built_in">fixed</span>=<span class="string">"EN"</span>/&gt;</div></pre></td></tr></table></figure>
+<p>可选的和必需的属性</p>
+<p>在缺省的情况下，属性是可选的。如需规定属性为必选，请使用 “use” 属性：</p>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;xs:attribute name=<span class="string">"lang"</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">"xs:string"</span> <span class="keyword">use</span>=<span class="string">"required"</span>/&gt;</div></pre></td></tr></table></figure>
+<p>use:  </p>
+<ul>
+<li>required(必填项)  </li>
+<li>optional(可选项)  </li>
+<li>prohibited(禁止项，主要用于升级后，失效的属性进行禁止)  </li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/11/26/XSD(3)--属性/" class="archive-article-date">
+  	<time datetime="2015-11-26T11:10:53.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-11-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xsd/">xsd</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-XSD(2)--基础元素" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -640,88 +719,9 @@
 
 
   
-    <article id="post-docker-(3)创建属于自己的镜像" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/13/docker-(3)创建属于自己的镜像/">docker-(3)创建属于自己的镜像</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://docs.docker.com/linux/step_four/" target="_blank" rel="external">build your own image</a></p>
-<p>##背景<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">如果你不知道该说什么，你想让巨鲸自己说。</div><div class="line"></div><div class="line">1. 写一个dockerfile</div></pre></td></tr></table></figure></p>
-<p>[root@sinno01 docker]# mkdir mydockerbuild<br>[root@sinno01 docker]# cd mydockerbuild/<br>[root@sinno01 mydockerbuild]# ls<br>[root@sinno01 mydockerbuild]# vi Dockerfile<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">2. </span>Dockerfile内容</div></pre></td></tr></table></figure></p>
-<p>FROM docker/whalesay:latest<br>RUN apt-get -y update &amp;&amp; apt-get install -y fortunes<br>CMD /usr/games/fortune -a | cowsay<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">3. </span>根据Dockerfile生成镜像</div></pre></td></tr></table></figure></p>
-<p>[root@sinno01 mydockerbuild]# docker build -t docker-whale .<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">4. </span>执行新建的docker-whale</div><div class="line"><span class="bullet">5. </span></div><div class="line"></div><div class="line"></div><div class="line"><span class="section">##备注</span></div><div class="line"></div><div class="line">[<span class="string">fortunes</span>](<span class="link">http://blog.fens.me/r-fortunes/</span>)  </div><div class="line">&gt;fortunes库是一个R语言的语录集，截止到2012年4月，一共总结了316条R-help的留言，这些都是R语言智慧的精华。让R语言的后辈使用者，可以更了解R语言的本身，了解R的精神。  </div><div class="line">&gt;fortunes项目发布页：<span class="xml"><span class="tag">&lt;<span class="name">http:</span>//<span class="attr">cran.r-project.org</span>/<span class="attr">web</span>/<span class="attr">packages</span>/<span class="attr">fortunes</span>/<span class="attr">index.html</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
-<p>[root@sinno01 docker]# mkdir mydockerbuild<br>[root@sinno01 docker]# cd mydockerbuild/<br>[root@sinno01 mydockerbuild]# ls<br>[root@sinno01 mydockerbuild]# vi Dockerfile<br>[root@sinno01 mydockerbuild]# ls<br>Dockerfile<br>[root@sinno01 mydockerbuild]# docker build -t docker-whale .<br>Sending build context to Docker daemon 2.048 kB<br>Step 0 : FROM docker/whalesay:latest<br> —&gt; ded5e192a685<br>Step 1 : RUN apt-get -y update &amp;&amp; apt-get install -y fortunes<br> —&gt; Running in 9b27c87b4fd4<br>Ign <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty InRelease<br>Get:1 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates InRelease [64.4 kB]<br>Get:2 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security InRelease [64.4 kB]<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty Release.gpg<br>Get:3 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/main Sources [299 kB]<br>Get:4 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/restricted Sources [4513 B]<br>Get:5 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/universe Sources [176 kB]<br>Get:6 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/main amd64 Packages [790 kB]<br>Get:7 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/restricted amd64 Packages [22.7 kB]<br>Get:8 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-updates/universe amd64 Packages [420 kB]<br>Get:9 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/main Sources [122 kB]<br>Get:10 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/restricted Sources [3230 B]<br>Get:11 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/universe Sources [35.4 kB]<br>Get:12 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/main amd64 Packages [440 kB]<br>Get:13 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/restricted amd64 Packages [19.4 kB]<br>Get:14 <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty-security/universe amd64 Packages [151 kB]<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty Release<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/main Sources<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/restricted Sources<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/universe Sources<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/main amd64 Packages<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/restricted amd64 Packages<br>Hit <a href="http://archive.ubuntu.com" target="_blank" rel="external">http://archive.ubuntu.com</a> trusty/universe amd64 Packages<br>Fetched 2612 kB in 1min 52s (23.3 kB/s)<br>Reading package lists…<br>Reading package lists…<br>Building dependency tree…<br>Reading state information…<br>The following extra packages will be installed:<br>  fortune-mod fortunes-min librecode0<br>Suggested packages:<br>  x11-utils bsdmainutils<br>The following NEW packages will be installed:<br>  fortune-mod fortunes fortunes-min librecode0<br>0 upgraded, 4 newly installed, 0 to remove and 46 not upgraded.<br>Need to get 1961 kB of archives.<br>After this operation, 4817 kB of additional disk space will be used.<br>Get:1 <a href="http://archive.ubuntu.com/ubuntu/" target="_blank" rel="external">http://archive.ubuntu.com/ubuntu/</a> trusty/main librecode0 amd64 3.6-21 [771 kB]<br>Get:2 <a href="http://archive.ubuntu.com/ubuntu/" target="_blank" rel="external">http://archive.ubuntu.com/ubuntu/</a> trusty/universe fortune-mod amd64 1:1.99.1-7 [39.5 kB]<br>Get:3 <a href="http://archive.ubuntu.com/ubuntu/" target="_blank" rel="external">http://archive.ubuntu.com/ubuntu/</a> trusty/universe fortunes-min all 1:1.99.1-7 [61.8 kB]<br>Get:4 <a href="http://archive.ubuntu.com/ubuntu/" target="_blank" rel="external">http://archive.ubuntu.com/ubuntu/</a> trusty/universe fortunes all 1:1.99.1-7 [1089 kB]<br>debconf: unable to initialize frontend: Dialog<br>debconf: (TERM is not set, so the dialog frontend is not usable.)<br>debconf: falling back to frontend: Readline<br>debconf: unable to initialize frontend: Readline<br>debconf: (This frontend requires a controlling tty.)<br>debconf: falling back to frontend: Teletype<br>dpkg-preconfigure: unable to re-open stdin:<br>Fetched 1961 kB in 19s (101 kB/s)<br>Selecting previously unselected package librecode0:amd64.<br>(Reading database … 13116 files and directories currently installed.)<br>Preparing to unpack …/librecode0_3.6-21_amd64.deb …<br>Unpacking librecode0:amd64 (3.6-21) …<br>Selecting previously unselected package fortune-mod.<br>Preparing to unpack …/fortune-mod_1%3a1.99.1-7_amd64.deb …<br>Unpacking fortune-mod (1:1.99.1-7) …<br>Selecting previously unselected package fortunes-min.<br>Preparing to unpack …/fortunes-min_1%3a1.99.1-7_all.deb …<br>Unpacking fortunes-min (1:1.99.1-7) …<br>Selecting previously unselected package fortunes.<br>Preparing to unpack …/fortunes_1%3a1.99.1-7_all.deb …<br>Unpacking fortunes (1:1.99.1-7) …<br>Setting up librecode0:amd64 (3.6-21) …<br>Setting up fortune-mod (1:1.99.1-7) …<br>Setting up fortunes-min (1:1.99.1-7) …<br>Setting up fortunes (1:1.99.1-7) …<br>Processing triggers for libc-bin (2.19-0ubuntu6.6) …<br> —&gt; 2c15b31466da<br>Removing intermediate container 9b27c87b4fd4<br>Step 2 : CMD /usr/games/fortune -a | cowsay<br> —&gt; Running in 48f098e4fef5<br> —&gt; 6c94d2cebae0<br>Removing intermediate container 48f098e4fef5<br>Successfully built 6c94d2cebae0<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">查看镜像</div></pre></td></tr></table></figure></p>
-<p>[root@sinno01 mydockerbuild]# docker images<br>REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE<br>docker-whale        latest              6c94d2cebae0        2 minutes ago       255.3 MB<br>centos              latest              0f73ae75014f        5 weeks ago         172.3 MB</p>
-<p><none>              <none>              283f8fff4e73        5 weeks ago         172.3 MB<br>hello-world         latest              8889088cb38d        9 weeks ago         960 B<br>docker/whalesay     latest              ded5e192a685        4 months ago        247 MB</none></none></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">执行新建的docker-whale</div></pre></td></tr></table></figure>
-<p>[root@sinno01 mydockerbuild]# docker run docker-whale</p>
-<hr>
-<h2 id="lt-Hailing-frequencies-open-Captain-gt"><a href="#lt-Hailing-frequencies-open-Captain-gt" class="headerlink" title="&lt; Hailing frequencies open, Captain. &gt;"></a>&lt; Hailing frequencies open, Captain. &gt;</h2><pre><code>\
- \
-  \     
-                ##        .            
-          ## ## ##       ==            
-       ## ## ## ##      ===            
-   /&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;___/ ===        
-</code></pre><p>  <del>~ {</del> <del>~~ ~</del> <del>~~ ~~ ~ /  ===- ~</del><br>       _<strong>_</strong> o          <strong>/<br>        \    \        </strong>/<br>          _<strong>_____</strong>/<br>[root@sinno01 mydockerbuild]# docker run docker-whale</p>
-<hr>
-<p>/ <overfiend> penis jokes are okay in \</overfiend></p>
-<h2 id="mixed-company-VMS-is-NOT"><a href="#mixed-company-VMS-is-NOT" class="headerlink" title="\ mixed company. VMS is NOT!!!        /"></a>\ mixed company. VMS is NOT!!!        /</h2><pre><code>\
- \
-  \     
-                ##        .            
-          ## ## ##       ==            
-       ## ## ## ##      ===            
-   /&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;___/ ===        
-</code></pre><p>  <del>~ {</del> <del>~~ ~</del> <del>~~ ~~ ~ /  ===- ~</del><br>       _<strong>_</strong> o          <strong>/<br>        \    \        </strong>/<br>          _<strong>_____</strong>/   </p>
-<p>```</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2015/10/13/docker-(3)创建属于自己的镜像/" class="archive-article-date">
-  	<time datetime="2015-10-13T09:22:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-13</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/镜像/">镜像</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 
@@ -803,7 +803,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 10px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 11.67px;">忠忠闲谈</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/相逢/" style="font-size: 10px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
+    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 11.67px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 11.67px;">忠忠闲谈</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/现在想见你/" style="font-size: 10px;">现在想见你</a> <a href="/tags/相逢/" style="font-size: 11.67px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
     			</div>
     	</section>
     

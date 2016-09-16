@@ -129,6 +129,68 @@
       <div class="body-wrap">
         
   
+    <article id="post-开发美丽说开放平台top版sdk" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/26/开发美丽说开放平台top版sdk/">开发美丽说开放平台top版sdk思路</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.背景<br>最近公司在做一个进货平台项目，可以让卖家从平台获取宝贝信息，将宝贝信息一键发布到各大卖家平台。如淘宝、阿里、京东、拍拍、苏宁等。</p>
+<p>淘宝、阿里、京东、拍拍、苏宁平台都基本成熟，有sdk和云主机（都跟淘宝的top平台类似）</p>
+<p>美丽说貌似刚起步，oauth体系，基本api已经开放，但是sdk没有发布出来。</p>
+<p>接口形式都跟top平台类似。估计也是淘宝的团队出来的人开放的吧。</p>
+<p>项目在急，总不能等着美丽说发布sdk吧，那么自己动手丰衣足食，将top的sdk迁移到美丽说好了。</p>
+<p>2.开放平台概述<br>首先开放平台可分为3类对象：使用者，平台，isv<br>平台的使用者需要通过平台授权给isv(无论有偿无偿都需要订购isv的应用)，isv得到使用者的授权(sessionkey)后，可以通过该sessionkey在平台进行一些平台开放的操作。如对宝贝、订单进行管理或分析帮组使用者更高效的处理日常事务。</p>
+<p>3.sdk 方案</p>
+<p>3.1<br>oauth是全世界通用，先得到code，再得到token。封装2个请求轻松取得用户的授权。</p>
+<p>3.2<br>api调用其实简单的来说就是一个http请求，将平台需要的参数拼接起来进行请求，然后平台收到请求进行处理，调用者接收平台的返回值进行再处理。</p>
+<p>讲整个过程抽象出3个对象<br>request：请求包含请求的所有参数<br>response：请求后的结果<br>client：用request向平台请求并得到response</p>
+<p>request －》 client －》response</p>
+<p>3.3数据校验<br>平台的接口对参数有一些要求，所以在client在获得request时，调用接口前，要对特定的参数进行check，如果不符合平台接口要求，则直接抛出错误，防止不必要的api调用。所有参数都符合要求后，再根据平台的要求生产sign(平台对请求的安全性校验)一并传入api调用参数中。</p>
+<p>完成以上所有步骤，美丽说的开放平台sdk便已经完成。<br>思想有了，其它平台也一样能轻松搞定。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/08/26/开发美丽说开放平台top版sdk/" class="archive-article-date">
+  	<time datetime="2015-08-26T14:59:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-08-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sdk/">sdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/top/">top</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开放平台/">开放平台</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/美丽说/">美丽说</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-工作四年感想" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -784,71 +846,9 @@ Here are some examples that demonstrate which config would create which storage 
 
 
   
-    <article id="post-hexo搭建" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/05/hexo搭建/">hexo搭建</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-安装git"><a href="#1-安装git" class="headerlink" title="1. 安装git"></a>1. 安装git</h4><blockquote>
-<p>yum install git  </p>
-</blockquote>
-<p>git －version<br>检查安装状态</p>
-<h4 id="2-安装node-js"><a href="#2-安装node-js" class="headerlink" title="2. 安装node.js"></a>2. 安装node.js</h4><p><a href="http://nodejs.org/" target="_blank" rel="external">node.js</a> </p>
-<blockquote>
-<p>wget <a href="https://nodejs.org/dist/v0.12.6/node-v0.12.6.tar.gz" target="_blank" rel="external">https://nodejs.org/dist/v0.12.6/node-v0.12.6.tar.gz</a><br>tar -zxvf node-v0.12.6.tar.gz<br>cd node-v0.12.6<br>./configure<br>make &amp;&amp; make install</p>
-</blockquote>
-<p>node -v 检查安装状态</p>
-<h4 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3. 安装hexo"></a>3. 安装hexo</h4><blockquote>
-<p>npm install -g hexo-cli</p>
-</blockquote>
-<p>hexo 检查安装状态</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2015/07/05/hexo搭建/" class="archive-article-date">
-  	<time datetime="2015-07-05T05:50:53.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-07-05</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
   
 
@@ -930,7 +930,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 10px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 11.67px;">忠忠闲谈</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/相逢/" style="font-size: 10px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
+    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 11.67px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 11.67px;">忠忠闲谈</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/现在想见你/" style="font-size: 10px;">现在想见你</a> <a href="/tags/相逢/" style="font-size: 11.67px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
     			</div>
     	</section>
     

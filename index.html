@@ -129,7 +129,7 @@
       <div class="body-wrap">
         
   
-    <article id="post-将来的那个人--相逢" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-相逢--现在想见你" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -139,7 +139,64 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/16/将来的那个人--相逢/">相逢--将来的那个人</a>
+      <a class="article-title" href="/2016/09/16/相逢--现在想见你/">相逢--现在想见你</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>被你爱着，就应该享有特权。<br>其中一项特权就是想见你时随时可以见到你。  </p>
+<p>深夜里，忽然想见你，打电话给你，说：“我现在就想见你。”   </p>
+<p>那么，请你不要问我有什么急事，是不是不舒服，你只要马上来见我就可以了。  </p>
+<p>你匆匆赶来，发觉我没什么急事，我只是想见你，请你不要说我任性，你应该欣赏我的率直。曾经有一刻，我是那么渴望见你，以致我甘心冒着被你拒绝的危险，大胆提出要求，你不是应该感动吗？  </p>
+<p>我一个人走在喧嚣的街上，情绪低落，心里疯狂的想念你，我打电话给你说：<br>“我想见你！”<br>请你不要问“什么时候”，笨蛋，当然是现在，如果不是现在想见你，打电话给你干什么？这个时候，希望你能说：<br>“你在哪里？不要走开，我马上来。”   </p>
+<p>如果你不能马上来，你以后也不用来了。  </p>
+<p>当我说想见你，请不要问“为什么”，如果你愿意来，不用问为什么，你不愿意来，<br>又为什么要问？  </p>
+<p><img src="http://7xk5y4.com1.z0.glb.clouddn.com/light.png" alt=""></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/09/16/相逢--现在想见你/" class="archive-article-date">
+  	<time datetime="2016-09-16T11:54:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-16</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/张小娴/">张小娴</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/现在想见你/">现在想见你</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/相逢/">相逢</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-相逢--将来的那个人" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/16/相逢--将来的那个人/">相逢--将来的那个人</a>
     </h1>
   
 
@@ -165,7 +222,7 @@
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/09/16/将来的那个人--相逢/" class="archive-article-date">
+      <a href="/2016/09/16/相逢--将来的那个人/" class="archive-article-date">
   	<time datetime="2016-09-16T06:43:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-16</time>
 </a>
       
@@ -708,71 +765,9 @@
 
 
   
-    <article id="post-jvm(6)--初始化" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/10/jvm(6)--初始化/">jvm(6)--初始化</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##初始化(Initialization)<br>初始化对于类或接口来说，就是执行它的初始化方法。  </p>
-<p>在发生下列行为时，类或接口将会被初始化：  </p>
-<p>在执行下列需要引用类或接口的jvm指令时：new，getstatic，putstatic或invokestatic。这些指令通过字段或方法引用来直接或间接地引用其它类。<br>执行上面所述的new指令，在类或接口没有被初始化过时就初始化它。<br>执行getstatic，putstatic或invokestatic指令时，那些解析好的字段或方法中的类或接口如果还没有被初始化那就初始化它。  </p>
-<p>在初次调用java.lang.invoke.MethodHandle 实例时,它的执行结果为通过 Java 虚拟机解析出类型是 2(REF_getStatic)、4(REF_putStatic)或者 6 (REF_invokeStatic)的方法句柄；</p>
-<p>在调用jdk核心类库中的反射方法时，例如，Class类或java.lang.reflect包。  </p>
-<p>在对于类的某个子类初始化时。  </p>
-<p>在它被选定为jvm启动时的初始类时。  </p>
-<p>在准备阶段，变量已经赋过一次系统要求的初始值，而在初始化阶段，则根据程序员通过程序制定的主观计划去初始化类变量和其他资源，或者可以从另外一个角度来表达：初始化阶段是执行类构造器<clinit>()方法的过程</clinit></p>
-<p><strong><clinit>()</clinit></strong>方法是由编译器自动收集类中的<strong>所有类变量的赋值</strong>动作和<strong>静态语句块</strong>（static{}块）中的语句合并产生的。  </p>
-<p>编译器收集的顺序是由语句在源文件中出现的顺序所决定的，静态语句块中只能访问到定义在静态语句块之前的变量，定义在它之后的变量，在前面的静态语句块可以赋值，但是不能访问。  </p>
-<p><clinit>()方法与类的构造函数(实例构造器<init>()方法)不同，它不需要显示地调用父类构造器，虚拟机会保证在子类的<clinit>()方法执行之前，父类的<clinit>()方法已经执行完毕。因此在虚拟机中第一个执行的<clinit>()方法的类肯定是java.lang.Object。</clinit></clinit></clinit></init></clinit></p>
-<p>父类的静态（块和变量）–&gt;子类的静态（块和变量）–&gt;父类的(块和变量＋构造方法)–&gt;子类的(块和变量＋构造方法)</p>
-<p>初始化顺序：<br>1.首先加载要创建对象的类及其直接与间接父类；<br>2.在类被加载的“同时”会将静态成员进行加载，主要包括静态成员变量的初始化，静态语句块的执行，在加载时按代码先后顺序进行<clinit>；<br>3.需要的类加载完成后，开始创建对象，首先会加载非静态的成员，主要包括非静态成员变量的初始化，非静态语句块的执行，在加载时按代码的先后顺序进行；<br>4.执行构造器，构造器执行完毕，对象生成。</clinit></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/03/10/jvm(6)--初始化/" class="archive-article-date">
-  	<time datetime="2016-03-10T07:51:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-10</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/">jvm</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -854,7 +849,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 10px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 11.67px;">忠忠闲谈</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/相逢/" style="font-size: 10px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
+    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 11.67px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 11.67px;">忠忠闲谈</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/现在想见你/" style="font-size: 10px;">现在想见你</a> <a href="/tags/相逢/" style="font-size: 11.67px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
     			</div>
     	</section>
     
