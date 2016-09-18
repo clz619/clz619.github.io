@@ -129,6 +129,94 @@
       <div class="body-wrap">
         
   
+    <article id="post-XSD(4)--限定" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/26/XSD(4)--限定/">XSD(4)--限定/facets</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>限定(restriction)用于为xml元素或者属性定义可接受的值。对XML元素的限定被称为facet。  </p>
+<p>##对值的限定</p>
+<p>###对基础元素的值的限定</p>
+<p>下面的例子定义了带一个限定且名为”age”的元素。age的值不能低于0或者高于120</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">xs:element</span> <span class="attr">name</span>=<span class="string">"age"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">xs:simpleType</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">xs:restriction</span> <span class="attr">base</span>=<span class="string">"xs:integer"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">xs:minInclusive</span> <span class="attr">value</span>=<span class="string">"0"</span>/&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">xs:maxInclusive</span> <span class="attr">value</span>=<span class="string">"120"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">xs:restriction</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">xs:simpleType</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">xs:element</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>###对一组值的限定<br>如需把XML元素的内容限制为一组可接受的值，我们要使用枚举约束(enumeration constraint).</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">xs:element</span> <span class="attr">name</span>=<span class="string">"car"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">xs:simpleType</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">xs:restriction</span> <span class="attr">base</span>=<span class="string">"xs:string"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">xs:enumeration</span> <span class="attr">value</span>=<span class="string">"Audi"</span>/&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">xs:enumeration</span> <span class="attr">value</span>=<span class="string">"Golf"</span>/&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">xs:enumeration</span> <span class="attr">value</span>=<span class="string">"BMW"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">xs:restriction</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">xs:simpleType</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">xs:element</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>上面的例子也可以被写成定义type，然后element中指定type。类型”carType”可被其他元素使用，因为它不是”car”元素的组成部分。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"car"</span> <span class="built_in">type</span>=<span class="string">"carType"</span>/&gt;</div><div class="line"></div><div class="line">&lt;<span class="keyword">x</span><span class="variable">s:simpleType</span> name=<span class="string">"carType"</span>&gt;</div><div class="line">    &lt;<span class="keyword">x</span><span class="variable">s:restriction</span> base=<span class="string">"xs:string"</span>&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:enumeration</span> value=<span class="string">"Audi"</span>/&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:enumeration</span> value=<span class="string">"Golf"</span>/&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:enumeration</span> value=<span class="string">"BMW"</span>/&gt;</div><div class="line">    &lt;/<span class="keyword">x</span><span class="variable">s:restriction</span>&gt;</div><div class="line">&lt;/<span class="keyword">x</span><span class="variable">s:simpleType</span>&gt;</div></pre></td></tr></table></figure>
+<p>###对一系列值的限定</p>
+<p>如需把XML元素的内容限制定义为一系列可使用的数字或字母，我们要使用模式约束(pattern constraint)</p>
+<p>下面的例子定义了带有一个限定的名为”letter”的元素。可接受的值只有小写字母a-z其中的一个</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">xs:element</span> <span class="attr">name</span>=<span class="string">"letter"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">xs:simpleType</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">xs:restriction</span> <span class="attr">base</span>=<span class="string">"xs:string"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">xs:pattern</span> <span class="attr">value</span>=<span class="string">"[a-z]"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">xs:restriction</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">xs:simpleType</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">xs:element</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>下一个例子定义了带有一个限定的名为”initials”的元素，可接受的值是大写字母A-Z其中的三个：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">xs:element</span> <span class="attr">name</span>=<span class="string">"initials"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">xs:simpleType</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">xs:restriction</span> <span class="attr">base</span>=<span class="string">"xs:string"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">xs:pattern</span> <span class="attr">value</span>=<span class="string">"[A-Z][A-Z][A-Z]"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">xs:restriction</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">xs:simpleType</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">xs</span> <span class="attr">element</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>下一个例子定义了带有一个限定的名为”initials”的元素，可接受的值是大写或小写字母a-z其中的三个：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">xs:element</span> <span class="attr">name</span>=<span class="string">"initials"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">xs:simpleType</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">xs:restriction</span> <span class="attr">base</span>=<span class="string">"xs:string"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">xs:pattern</span> <span class="attr">value</span>=<span class="string">"[a-zA-Z][a-zA-Z][a-zA-Z]"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">xs:restriction</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">xs:simpleType</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">xs</span> <span class="attr">element</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>下一个例子定义了带有一个限定的名为”choice”的元素。可接受的值是字母x,y或z中的一个</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">xs:element</span> <span class="attr">name</span>=<span class="string">"choice"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">xs:simpleType</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">xs:restriction</span> <span class="attr">base</span>=<span class="string">"xs:string"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">xs:pattetn</span> <span class="attr">value</span>=<span class="string">"xyz"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">xs:restriction</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">xs:simpleType</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">xs:element</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>###对空白符的限定<br><strong>whiteSpace</strong>,对空白字符处理。</p>
+<p><strong>preserve</strong>意味着XML处理器不会移除任何空白字符：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">xs:element</span> <span class="attr">name</span>=<span class="string">"address"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">xs:simpleType</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">xs:restriction</span> <span class="attr">base</span>=<span class="string">"xs:string"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">xs:whiteSpace</span> <span class="attr">value</span>=<span class="string">"preserve"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">xs:restriction</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">xs:simpleType</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">xs:element</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>replace</strong>将移除所有空白字符（换行、会车、空格以及制表符）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">xs:element</span> <span class="attr">name</span>=<span class="string">"address"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">xs:simpleType</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">xs:restriction</span> <span class="attr">base</span>=<span class="string">"xs:string"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">xs:whiteSpace</span> <span class="attr">value</span>=<span class="string">"replace"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">xs:restriction</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">xs:simpleType</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">xs:element</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>collapse</strong>将移除所有空白字符（换行、回车、空格以及制表符会被替换为空格，开头和结尾的空格为被移除，而多个连续的空格会被缩减为一个单一的空格）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">xs:element</span> <span class="attr">name</span>=<span class="string">"address"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">xs:simpleType</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">xs:restriction</span> <span class="attr">base</span>=<span class="string">"xs:string"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">xs:whiteSpace</span> <span class="attr">value</span>=<span class="string">"collapse"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">xs:restriction</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">xs:simpleType</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">xs:element</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>###对长度的限定<br><strong>length</strong>定义元素的精确长度<br><strong>maxLength</strong>定义元素的最大字符长度<br><strong>minLength</strong>定义元素的最小字符长度  </p>
+<p>##数据类型的设定<br><strong>enumeration</strong>:定义可接受值的一个列表  </p>
+<p><strong>pattern</strong>:定义可接受的字符的精确序列，使用正则表达式</p>
+<p><strong>whiteSpace</strong>:定义空白字符(换行、回车、空格以及制表符)的处理方式  </p>
+<ul>
+<li>preserve:不会移除任何空白字符  </li>
+<li>replace:移除所有空白字符（换行、会车、空格以及制表符）  </li>
+<li>collapse:移除所有空白字符（换行、回车、空格以及制表符会被替换为空格，开头和结尾的空格为被移除，而多个连续的空格会被缩减为一个单一的空格）  </li>
+</ul>
+<p><strong>fractionDigits</strong>:定义所允许的最大的小数位数。必须大于等于0<br><strong>totalDigits</strong>:定义所允许的阿拉伯数字的精确位数。必须大于或等于0  </p>
+<p><strong>length</strong>:定义所允许的字符或者列表项目的精确数目。必须大于或等于0<br><strong>minLength</strong>:定义所允许的字符或者列表项目的最小数目。必须大于或等于0<br><strong>maxLength</strong>:定义所允许的字符或者列表项目的最大数目。必须大于或等于0</p>
+<p><strong>minExclusive</strong>:定义数值的下限。所允许的值必须大于此值<br><strong>maxExclusive</strong>:定义数值的上限。所允许的值必须小于此值</p>
+<p><strong>minInclusive</strong>:定义数值的下限。所允许的值必须大于等于此值<br><strong>maxInclusive</strong>:定义数值的上限。所允许的值必须小于等于此值</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/11/26/XSD(4)--限定/" class="archive-article-date">
+  	<time datetime="2015-11-26T11:52:53.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-11-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xsd-facets/">xsd,facets</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-XSD(5)--复合元素" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -684,62 +772,6 @@
 
 
   
-    <article id="post-docker-(5)搭建私有仓库" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/17/docker-(5)搭建私有仓库/">docker-(5)搭建私有仓库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://docs.docker.com/registry/deploying/" target="_blank" rel="external">搭建私库</a></p>
-<ol>
-<li>拖取 registry<br>docker pull registry  </li>
-<li>docker run -d -p 5000:5000 registry</li>
-</ol>
-<p>start your registry:<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker <span class="built_in">run</span> -d -p <span class="number">5000</span>:<span class="number">5000</span> <span class="comment">--restart=always --name registry registry:2</span></div></pre></td></tr></table></figure></p>
-<p>get any image from the hub<br>and<br>tag it to point to your registry<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull centos/centos7 &amp;&amp; docker <span class="keyword">tag</span> <span class="title">centos</span>/centos7 localhost:<span class="number">5000</span>/centos/centos7</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2015/10/17/docker-(5)搭建私有仓库/" class="archive-article-date">
-  	<time datetime="2015-10-17T09:44:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-17</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/仓库/">仓库</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -824,7 +856,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/你会爱我多久/" style="font-size: 10px;">你会爱我多久</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 13.33px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 11.67px;">忠忠闲谈</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/现在想见你/" style="font-size: 10px;">现在想见你</a> <a href="/tags/相逢/" style="font-size: 13.33px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
+    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/你会爱我多久/" style="font-size: 10px;">你会爱我多久</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 15px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 11.67px;">忠忠闲谈</a> <a href="/tags/拥抱/" style="font-size: 10px;">拥抱</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/现在想见你/" style="font-size: 10px;">现在想见你</a> <a href="/tags/男人要的三份礼物/" style="font-size: 10px;">男人要的三份礼物</a> <a href="/tags/相逢/" style="font-size: 13.33px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
     			</div>
     	</section>
     
