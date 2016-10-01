@@ -129,6 +129,94 @@
       <div class="body-wrap">
         
   
+    <article id="post-XSD(6)--复合类型指示器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/26/XSD(6)--复合类型指示器/">XSD(6)--复合类型指示器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>通过指示器，我们可以控制在文档中使用元素的方式。</p>
+<p>Order指示器:  </p>
+<ul>
+<li>All  </li>
+<li>Choice  </li>
+<li>Sequence  </li>
+</ul>
+<p>Occurrence指示器:  </p>
+<ul>
+<li>maxOccurs  </li>
+<li>minOccurs  </li>
+</ul>
+<p>Group指示器：  </p>
+<ul>
+<li>Group name  </li>
+<li>attributeGroup name  </li>
+</ul>
+<p>Order指示器用于定义元素的顺序。</p>
+<p>###All指示器<br>规定子元素可以按照任意顺序出现，且每个子元素必须只出现一次:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"person"</span>&gt;</div><div class="line">    &lt;<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:all</span>&gt;</div><div class="line">            &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"firstname"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span>/&gt;</div><div class="line">            &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"lastname"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span>/&gt;</div><div class="line">        &lt;/<span class="keyword">x</span><span class="variable">s:all</span>&gt;</div><div class="line">    &lt;/<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div><div class="line">&lt;/<span class="keyword">x</span><span class="variable">s:element</span>&gt;</div></pre></td></tr></table></figure>
+<p>###Choice指示器<br>规定可出现某个子元素或者可出现另外一个子元素（非此即彼）</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"person"</span>&gt;</div><div class="line">    &lt;<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:choice</span>&gt;</div><div class="line">            &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"employee"</span> <span class="built_in">type</span>=<span class="string">"employee"</span> /&gt;</div><div class="line">            &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"member"</span> <span class="built_in">type</span>=<span class="string">"member"</span> /&gt;</div><div class="line">        &lt;/<span class="keyword">x</span><span class="variable">s:choice</span>&gt;</div><div class="line">    &lt;/<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div><div class="line">&lt;/<span class="keyword">x</span><span class="variable">s:element</span>&gt;</div></pre></td></tr></table></figure>
+<p>###Sequence指示器<br>规定子元素必须按照特定的顺序出现</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"person"</span>&gt;</div><div class="line">    &lt;<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:sequence</span>&gt;</div><div class="line">            &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"firstname"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span>/&gt;</div><div class="line">            &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"lastname"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span>/&gt;</div><div class="line">        &lt;/<span class="keyword">x</span><span class="variable">s:sequence</span>&gt;</div><div class="line">    &lt;/<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div><div class="line">&lt;/<span class="keyword">x</span><span class="variable">s:element</span>&gt;</div></pre></td></tr></table></figure>
+<p>Occurrence指示器<br>定义某个元素出现的频率<br>对于所有的”Order”和”Group”指示器(any、all、choice、sequence、group name以及group reference)，其中的maxOccurs以及minOccurs的默认值均为1。</p>
+<p>###maxOccurs指示器<br>可以规定某个元素可出现的最大次数</p>
+<p>“child_name”可在”person”元素中最少出现一次(其中minOccurs的默认值是1)，最多出现10次 </p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"person"</span>&gt;</div><div class="line">    &lt;<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:sequence</span>&gt;</div><div class="line">            &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"full_name"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span> /&gt;</div><div class="line">            &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"child_name"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span> maxOccurs=<span class="string">"10"</span> /&gt;</div><div class="line">        &lt;/<span class="keyword">x</span><span class="variable">s:sequence</span>&gt;</div><div class="line">    &lt;/<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div><div class="line">&lt;/<span class="keyword">x</span><span class="variable">s:element</span>&gt;</div></pre></td></tr></table></figure>
+<p><strong>如果需要使摸个元素的出现次数不受限制，maxOccurs=”unbounded”这个声明</strong></p>
+<p>###minOccurs指示器<br>可以规定某个元素可出现的最小次数<br>“child_name”可在”person”元素中出现最少0次，最多出现10次</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"person"</span>&gt;</div><div class="line">    &lt;<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:sequence</span>&gt;</div><div class="line">            &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"full_name"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span> /&gt;</div><div class="line">            &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"child_name"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span> miOccurs=<span class="string">"0"</span> maxOccurs=<span class="string">"10"</span> /&gt;</div><div class="line">        &lt;/<span class="keyword">x</span><span class="variable">s:sequence</span>&gt;</div><div class="line">    &lt;/<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div><div class="line">&lt;/<span class="keyword">x</span><span class="variable">s:element</span>&gt;</div></pre></td></tr></table></figure>
+<p>###Group指示器<br>定义相关的数批元素</p>
+<p>###元素组</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xs:<span class="keyword">group</span> name=<span class="string">"组名称"</span>&gt;</div><div class="line">    <span class="params">...</span></div><div class="line">&lt;/xs:<span class="keyword">group</span>&gt;</div></pre></td></tr></table></figure>
+<p>在group声明内部定义一个all、choice或者sequence元素。</p>
+<p>定义必须按照精确的顺序出现的一组元素：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">x</span><span class="variable">s:group</span> name=<span class="string">"persongroup"</span>&gt;</div><div class="line">    &lt;<span class="keyword">x</span><span class="variable">s:sequence</span>&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"firstname"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span>/&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"lastname"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span>/&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"birthday"</span> <span class="built_in">type</span>=<span class="string">"xs:date"</span>/&gt;</div><div class="line">    &lt;/<span class="keyword">x</span><span class="variable">s:sequence</span>&gt;</div><div class="line">&lt;/<span class="keyword">x</span><span class="variable">s:group</span>&gt;</div><div class="line"></div><div class="line">&lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"person"</span> <span class="built_in">type</span>=<span class="string">"personinfo"</span>/&gt;</div><div class="line"></div><div class="line">&lt;<span class="keyword">x</span><span class="variable">s:complexType</span> name=<span class="string">"personinfo"</span>&gt;</div><div class="line">    &lt;<span class="keyword">x</span><span class="variable">s:sequence</span>&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:group</span> ref=<span class="string">"persongroup"</span>/&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"country"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span>/&gt;</div><div class="line">    &lt;/<span class="keyword">x</span><span class="variable">s:sequence</span>&gt;</div><div class="line">&lt;/<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div></pre></td></tr></table></figure>
+<p>###属性组</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">xs:attributeGroup</span> <span class="attr">name</span>=<span class="string">"组名称"</span>&gt;</span></div><div class="line">    ...</div><div class="line"><span class="tag">&lt;/<span class="name">xs:attributeGroup</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">x</span><span class="variable">s:attributeGroup</span> name=<span class="string">"personattrgroup"</span>&gt;</div><div class="line">    &lt;<span class="keyword">x</span><span class="variable">s:attribute</span> name=<span class="string">"firstname"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span> /&gt;</div><div class="line">    &lt;<span class="keyword">x</span><span class="variable">s:attribute</span> name=<span class="string">"lastname"</span> <span class="built_in">type</span>=<span class="string">"xs:string"</span> /&gt;</div><div class="line">    &lt;<span class="keyword">x</span><span class="variable">s:attribute</span> name=<span class="string">"birthday"</span> <span class="built_in">type</span>=<span class="string">"xs:date"</span> /&gt;</div><div class="line">&lt;/<span class="keyword">x</span><span class="variable">s:attributeGroup</span>&gt;</div><div class="line"></div><div class="line">&lt;<span class="keyword">x</span><span class="variable">s:element</span> name=<span class="string">"person"</span>&gt;</div><div class="line">    &lt;<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div><div class="line">        &lt;<span class="keyword">x</span><span class="variable">s:attributeGroup</span> ref=<span class="string">"personattrgroup"</span>/&gt;</div><div class="line">    &lt;/<span class="keyword">x</span><span class="variable">s:complexType</span>&gt;</div><div class="line">&lt;/<span class="keyword">x</span><span class="variable">s:element</span>&gt;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/11/26/XSD(6)--复合类型指示器/" class="archive-article-date">
+  	<time datetime="2015-11-26T12:23:53.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-11-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xsd/">xsd</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-XSD(4)--限定" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -719,59 +807,6 @@
 
 
   
-    <article id="post-家用动态域名解析" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/17/家用动态域名解析/">家用动态域名解析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>方法一：<a href="http://service.oray.com/question/1890.html" target="_blank" rel="external">花生壳linux安装</a></p>
-<p>方法二：路由器中设置动态域名，登录花生壳</p>
-<p>问题：花生壳经常映射不正确的ip地址。</p>
-<p>原因：在2台路由器上登录了花生壳，导致dns映射的ip不对。并且linux上启动了phddns。导致映射混乱。只保留一个就正常了。</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2015/10/17/家用动态域名解析/" class="archive-article-date">
-  	<time datetime="2015-10-17T14:54:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-10-17</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态域名/">动态域名</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -856,7 +891,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/你会爱我多久/" style="font-size: 10px;">你会爱我多久</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 15px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 11.67px;">忠忠闲谈</a> <a href="/tags/拥抱/" style="font-size: 10px;">拥抱</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/现在想见你/" style="font-size: 10px;">现在想见你</a> <a href="/tags/男人要的三份礼物/" style="font-size: 10px;">男人要的三份礼物</a> <a href="/tags/相逢/" style="font-size: 13.33px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
+    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/二十七八岁/" style="font-size: 10px;">二十七八岁</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/你会爱我多久/" style="font-size: 10px;">你会爱我多久</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 15px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 13.33px;">忠忠闲谈</a> <a href="/tags/拥抱/" style="font-size: 10px;">拥抱</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/现在想见你/" style="font-size: 10px;">现在想见你</a> <a href="/tags/男人要的三份礼物/" style="font-size: 10px;">男人要的三份礼物</a> <a href="/tags/相逢/" style="font-size: 13.33px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
     			</div>
     	</section>
     

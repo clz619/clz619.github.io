@@ -129,6 +129,95 @@
       <div class="body-wrap">
         
   
+    <article id="post-Think in UML(1)－－为什么需要UML" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/13/Think in UML(1)－－为什么需要UML/">Think in UML(1)－－为什么需要UML</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##背景<br>计算机通过数据来记录这个过程的变迁。过程中每一步都会产生、修改或读取一部分数据。每一个环节完成后，数据将顺着过程链传递到下一部分。当我们需要的最终结果在数据中被反映出来，即达到预期状态的时候，我们认为这个过程结束了。  </p>
+<p>为了很好地分析这样的过程，DFD图被广泛应用。<br>DFD图表达了：<br>（从上一步）输入数据-&gt;（在这一步）功能计算-&gt;(向下一步)输出数据<br>这样一个基础单元。  </p>
+<p>随着需求越来越复杂，系统越来越庞大，功能点越来越多，一份数据经常被多个过程共享，这些过程对同一份数据的创建和读取要求越来越趋于复杂和多样，经常出现相矛盾的数据需求，因此分析和设计也变得越来越困难。（<a href="http://blog.csdn.net/turkeyzhou/article/details/5144273" target="_blank" rel="external">uc矩阵</a>）  </p>
+<p>##面向对象方法<br>面向对象（Object Oriented，简称OO）方法将世界看作一个个相互独立的对象，相互之间并无因果关系，只有在某个外力的驱动下，对象之间才会依据某种规律相互传递信息。<br>所有相互独立的对象，按规则组合起来后，就是整个世界。</p>
+<p>###特性  </p>
+<p>####从微观角度<br>这些独立对象有着一系列奇妙而古怪的特性。  </p>
+<p>#####封装<br>对象有着坚硬的外壳，从外部看来，除了它用来与外界交互的消息通道之外，对象内部就是一个黑匣子，什么也看不到。  </p>
+<p>#####聚合<br>对象可以结合在一起形成新的对象，结合后的对象具有前两者特性的总和。  </p>
+<p>#####继承<br>对象可以繁育，产下的孩子将拥有父辈全部的本领。  </p>
+<p>#####接口<br>对象有多个外贸，在不同情况下，可以展现不同的外貌，但本质只有一个。  </p>
+<p>#####多态<br>多个对象却可能长着相同的脸，但同样的脸背后却是不同的对象，它们有着不同的行为。  </p>
+<p>####从宏观角度-短视<br>对象是“短视”的，它不知道也无法理解它所处的宏观环境，也不知道它的行为会对整个宏观环境造成怎样的影响。  </p>
+<p>#####依赖<br>它只知道与它有着联系的身边的一小群伙伴。</p>
+<p>#####耦合<br>它与小伙伴们保持着信息交流的关系。</p>
+<p>####从宏观角度-自私<br>对象是“自私”的。    </p>
+<p>#####属性<br>即便在伙伴之间，每个对象也仍然顽固的保护着自己的领地。  </p>
+<p>#####方法<br>只允许其他人通过它打开的小窗口进行交流，从不允许对方进入它的领地。</p>
+<p>####物以类聚，人以群分<br>对象也喜欢群居。这些群居的对象有着一些相似的性质，它们依靠这些相似的性质来组成一个部落。</p>
+<p>#####抽象<br>对象们寻找相似性质并组成部落的过程。</p>
+<p>#####类<br>对象组成的部落。</p>
+<p>#####实例化<br>部落里每个成员既有共同的性质，又有自己的个性，我们只有把特有的个性赋给部落成员才能区分它们并使它们活动起来。</p>
+<p>#####复用<br>某些零件不是特殊的只能用于制造某个东西，它们还可以用于别的地方。</p>
+<p>####抽象层次<br>抽象可以由两个方向进行，由小及大（或称为自底向上）的抽象过程，由大及小（或称为自顶向下）的抽象过程。<br>抽象层次的好处：  </p>
+<ol>
+<li>不论在哪一个层次上，我们都只需要面对有限的复杂度和有限的对象结构，从而可以专心地了解这个层次上的对象是如何工作的。  </li>
+<li>低层次的零件更换不会影响高层次的功能。</li>
+</ol>
+<p>###面向对象的困难  </p>
+<ol>
+<li>why<br>对象是怎么被抽象出来的？现实世界和对象世界看上去差别是那么大，为什么要这么抽象而不是那么抽象呢？  </li>
+<li>how<br>对象世界由于其灵活性，可以任意组合，可是我们怎么知道某个组合就正好满足了现实世界的需求呢？什么的组合是好的，什么样的组合是差的呢？  </li>
+<li>what<br>抛开现实世界，对象世界是如此的难以理解。如果只给我一个对象组合，我怎么才能理解它表达了怎样的含义呢？</li>
+</ol>
+<p>##结尾<br>现实世界与对象世界之间存在一道鸿沟，这道鸿沟叫做抽象。<br>想要跨越这道鸿沟，我们需要：  </p>
+<ol>
+<li>一种把现实世界映射到对象世界的方法。  </li>
+<li>一种从对象世界描述现实世界的方法。  </li>
+<li>一种验证对象世界行为是否正确反映现实世界的方法。  </li>
+</ol>
+<p>UML，代表的面向对象分析设计方法正好架起了跨越这道鸿沟的桥梁。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/09/13/Think in UML(1)－－为什么需要UML/" class="archive-article-date">
+  	<time datetime="2015-09-13T12:17:06.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-09-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uml/">uml</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-风口上的猪" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -776,146 +865,6 @@ private String sort;
 
 
   
-    <article id="post-tomcat搭建session共享" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/05/tomcat搭建session共享/">tomcat搭建session共享</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h4><p>当前项目，使用一台服务器无法支撑住现有的访问量，需要使用多台服务器进行负载访问。</p>
-<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><p>#####安装memcached<br>安装memcached前提条件</p>
-<p>安装libevent</p>
-<p>wget<br><a href="https://github.com/downloads/libevent/libevent/libevent-1.4.14b-stable.tar.gz" target="_blank" rel="external">https://github.com/downloads/libevent/libevent/libevent-1.4.14b-stable.tar.gz</a></p>
-<p>1.<br>tar -xzvf libevent-1.4.14b-stable.tar.gz</p>
-<p>2.<br>cd libevent-1.4.14b-stable</p>
-<p>3.<br>./configure</p>
-<p>4.<br>make</p>
-<p>5.<br>sudo make install</p>
-<p>安装memcached  </p>
-<p>wget <a href="http://www.memcached.org/files/memcached-1.4.24.tar.gz" target="_blank" rel="external">http://www.memcached.org/files/memcached-1.4.24.tar.gz</a></p>
-<p>1.<br>tar -xzvf<br>2.<br>./configure<br>3.<br>make<br>4.<br>sudo make install</p>
-<h5 id="启动memcached"><a href="#启动memcached" class="headerlink" title="启动memcached"></a>启动memcached</h5><p>/usr/local/bin/memcached -d -m 64 -u root -l 127.0.0.1 -p 11211 -c 32 -P /tmp/memcached.pid  </p>
-<p>/usr/local/bin/memcached -d -m 64 -u root -l 127.0.0.1 -p 11212 -c 32 -P /tmp/memcached.pid  </p>
-<p>参数含义：<br>-d 表示启动一个守护进程<br>-m 指定分配给memcache的内存数量，单位上mb，这里指定的是10mb<br>-u 指定运行memcache的用户，这里指定的是root<br>-l 指定监听的服务器的IP地址<br>-p 设置memcache监听的端口，这里指定的是11211<br>-c 指定最大允许的并非连接数，这里设置为32<br>-P 指定memcache的pid文件保存的位置  </p>
-<p>#####关闭memcache服务</p>
-<p>kill ‘cat /tmp/memcached.pid’  </p>
-<p>#####安装配置tomcat<br>wget <a href="http://mirrors.cnnic.cn/apache/tomcat/tomcat-7/v7.0.63/bin/apache-tomcat-7.0.63.tar.gz" target="_blank" rel="external">http://mirrors.cnnic.cn/apache/tomcat/tomcat-7/v7.0.63/bin/apache-tomcat-7.0.63.tar.gz</a>  </p>
-<p>tar -xzvf apache-tomcat-7.0.63.tar.gz  </p>
-<p>cp -ri  apache-tomcat-7.0.63 /data/apache-tomcat-7.0.63</p>
-<p>cd /data</p>
-<p>cp -ri  apache-tomcat-7.0.63 tomcat-sinno01</p>
-<p>cp -ri  apache-tomcat-7.0.63 tomcat-sinno02</p>
-<p>修改配置</p>
-<h5 id="nginx安装"><a href="#nginx安装" class="headerlink" title="nginx安装"></a>nginx安装</h5><p>wget <a href="http://nginx.org/download/nginx-1.9.2.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.9.2.tar.gz</a></p>
-<p>tar -xzvf nginx-1.9.2.tar.gz</p>
-<p>.configure</p>
-<p>make &amp;&amp; make install</p>
-<h5 id="配置msm"><a href="#配置msm" class="headerlink" title="配置msm"></a>配置msm</h5><p><a href="https://code.google.com/p/memcached-session-manager/wiki/SetupAndConfiguration" target="_blank" rel="external">https://code.google.com/p/memcached-session-manager/wiki/SetupAndConfiguration</a></p>
-<p><a href="http://chenzhou123520.iteye.com/blog/1650212" target="_blank" rel="external">http://chenzhou123520.iteye.com/blog/1650212</a></p>
-<p>tomcat6配置</p>
-<p>vi conf/context.xml</p>
-<manager classname="de.javakaffee.web.msm.MemcachedBackupSessionManager" memcachednodes="sinno01:11211" username="sinno" password="sinno" memcachedprotocol="binary" sticky="true" sessionbackupasync="true" sessionbackuptimeout="2000" storagekeyprefix="static:session_sinno" requesturiignorepattern=".*\.(gif|jpg|jpeg|png|bmp|swf|js|css|html|htm|xml|json)$" transcoderfactoryclass="de.javakaffee.web.msm.serializer.kryo.KryoTranscoderFactory">
-
-<p>vi conf/server.xml</p>
-<connector emptysessionpath="true">
-
-
-<h5 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h5><pre><code>public class SessionUI extends Controller {  
-   public static void setSessionValue(String k, String v) {  
-       session.put(k, v);  
-       renderJSON(Play.id + &quot; set k:&quot; + k + &quot;,v:&quot; + v);  
-   }  
-   public static void getSessionValue(String k) {
-       String v = session.get(k);
-       renderJSON(Play.id + &quot; get k:&quot; + k + &quot;,v:&quot; + v);
-   }  
-
-   public static void getSessionId() {
-       renderJSON(Play.id + &quot; sessionId:&quot; + session.getId());
-   }
-}
-</code></pre><p><a href="http://sinno/sessionui/setSessionValue?k=aa&amp;v=test" target="_blank" rel="external">http://sinno/sessionui/setSessionValue?k=aa&amp;v=test</a><br>页面返回：<br>sinno01 set k:aa,v:test  </p>
-<p>不断刷新页面 会在下面2种返回数据替换<br><a href="http://sinno/sessionui/getSessionValue?k=aa" target="_blank" rel="external">http://sinno/sessionui/getSessionValue?k=aa</a><br>页面返回：<br>sinno01 get k:aa,v:test  </p>
-<p><a href="http://sinno/sessionui/getSessionValue?k=aa" target="_blank" rel="external">http://sinno/sessionui/getSessionValue?k=aa</a><br>页面返回：<br>sinno02 get k:aa,v:test  </p>
-<p><a href="http://www.douban.com/note/325861884/?type=like" target="_blank" rel="external">使用nginx做负载均衡造成的session共享问题</a><br><a href="http://blog.yemou.net/article/query/info/tytfjhfascvhzxcyt158" target="_blank" rel="external">Nginx 的线程池与性能剖析</a></p>
-<p>为了防止nginx不固定随机分配服务器  </p>
-<p>upstream dazhe.ciaosir.com {<br>           server sinno01:9000;<br>           server sinno02:9000;<br>           ip_hash;  </p>
-<pre><code>   #根据iphash固定服务器  
-}
-</code></pre><p>关掉sinno01还可以继续访问</p>
-<p>session还能取得</p>
-<p>session共享成功</p>
-<p>####说明</p>
-<p>storageKeyPrefix (since 1.8.0, optional, default webappVersion)</p>
-<pre><code>Allows to configure a prefix that&apos;s added to the session id when a session is stored in memcached. This is useful if there are multiple webapps sharing the same session id, e.g. because contexts are configured with sessionCookiePath=&quot;/&quot; (tomcat 7, or emptySessionPath=&quot;true&quot; in tomcat 6) 
-
-When tomcats parallel deployment is used there are also multiple webapps sharing the same session id. This is supported by default, because the default value (if storageKeyPrefix is not set explicitely) is webappVersion, so that the webapp version is used as prefix for the session id / key in memcached. 
-
-The storageKeyPrefix attribute supports both a static prefix (static:somePrefix) and dynamic values (host, context, webappVersion), multiple values can be specified seperated by comma. 
-
-Here are some examples that demonstrate which config would create which storage key (for a session id &quot;foo&quot; with context path &quot;ctxt&quot; and host &quot;hst&quot;):
-
-    static:x -&gt; x_foo
-    host -&gt; hst_foo
-    host.hash -&gt; e93c085e_foo
-    context -&gt; ctxt_foo
-    context.hash -&gt; 45e6345f_foo
-    host,context -&gt; hst:ctxt_foo
-    webappVersion -&gt; 001_foo
-    host.hash,context.hash,webappVersion -&gt; e93c085e:45e6345f:001_foo 
-</code></pre><p>Aug 2, 2015 11:50:16 PM de.javakaffee.web.msm.MemcachedSessionService startInternal<br>INFO: MemcachedSessionService starts initialization… (configured nodes definition sinno01:11211, failover nodes null)<br>Aug 2, 2015 11:50:16 PM org.apache.catalina.core.StandardContext start<br>SEVERE: Error manager.start()<br>java.lang.IllegalArgumentException: Unsupported config token session_sinno<br>at de.javakaffee.web.msm.StorageKeyFormat$PrefixTokenFactory.parse(StorageKeyFormat.java:121)<br>at de.javakaffee.web.msm.StorageKeyFormat.of(StorageKeyFormat.java:79)<br>at de.javakaffee.web.msm.MemcachedSessionService.createMemcachedNodesManager(MemcachedSessionService.java:479)<br>at de.javakaffee.web.msm.MemcachedSessionService.startInternal(MemcachedSessionService.java:423)<br>at de.javakaffee.web.msm.MemcachedBackupSessionManager.startInternal(MemcachedBackupSessionManager.java:134)<br>at de.javakaffee.web.msm.MemcachedBackupSessionManager.start(MemcachedBackupSessionManager.java:647)<br>at org.apache.catalina.core.StandardContext.start(StandardContext.java:4714)<br>at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:799)<br>at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:779)<br>at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:601)<br>at org.apache.catalina.startup.HostConfig.deployWAR(HostConfig.java:943)<br>at org.apache.catalina.startup.HostConfig.deployWARs(HostConfig.java:778)<br>at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:504)<br>at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1317)<br>at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:324)<br>at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:142)<br>at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1065)<br>at org.apache.catalina.core.StandardHost.start(StandardHost.java:840)<br>at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1057)<br>at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:463)<br>at org.apache.catalina.core.StandardService.start(StandardService.java:525)<br>at org.apache.catalina.core.StandardServer.start(StandardServer.java:754)<br>at org.apache.catalina.startup.Catalina.start(Catalina.java:595)<br>at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)<br>at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)<br>at java.lang.reflect.Method.invoke(Method.java:597)<br>at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:289)<br>at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:414)<br>Aug 2, 2015 11:50:16 PM org.apache.catalina.core.StandardContext start<br>SEVERE: Context [] startup failed due to previous errors<br>Aug 2, 2015 11:50:16 PM de.javakaffee.web.msm.MemcachedBackupSessionManager stop<br>INFO: Removing sessions from local session map.<br>Aug 2, 2015 11:50:16 PM de.javakaffee.web.msm.MemcachedSessionService shutdown<br>INFO: Stopping services.<br>Aug 2, 2015 11:50:16 PM org.apache.catalina.core.StandardContext start<br>SEVERE: Exception during cleanup after start failed<br>java.lang.NullPointerException<br>at org.apache.catalina.core.StandardPipeline.removeValve(StandardPipeline.java:528)<br>at de.javakaffee.web.msm.MemcachedSessionService.shutdown(MemcachedSessionService.java:388)<br>at de.javakaffee.web.msm.MemcachedBackupSessionManager.stop(MemcachedBackupSessionManager.java:680)<br>at org.apache.catalina.core.StandardContext.stop(StandardContext.java:4882)<br>at org.apache.catalina.core.StandardContext.start(StandardContext.java:4750)<br>at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:799)<br>at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:779)<br>at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:601)<br>at org.apache.catalina.startup.HostConfig.deployWAR(HostConfig.java:943)<br>at org.apache.catalina.startup.HostConfig.deployWARs(HostConfig.java:778)<br>at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:504)<br>at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1317)<br>at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:324)<br>at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:142)<br>at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1065)<br>at org.apache.catalina.core.StandardHost.start(StandardHost.java:840)<br>at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1057)<br>at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:463)<br>at org.apache.catalina.core.StandardService.start(StandardService.java:525)<br>at org.apache.catalina.core.StandardServer.start(StandardServer.java:754)<br>at org.apache.catalina.startup.Catalina.start(Catalina.java:595)<br>at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)<br>at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)<br>at java.lang.reflect.Method.invoke(Method.java:597)<br>at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:289)<br>at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:414)<br>Aug 2, 2015 11:50:16 PM org.apache.tomcat.util.modeler.Registry registerComponent<br>SEVERE: Null component Catalina:type=JspMonitor,name=jsp,WebModule=//localhost/,J2EEApplication=none,J2EEServer=none<br>Aug 2, 2015 11:50:16 PM org.apache.catalina.core.ContainerBase stop<br>INFO: Container org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/].[jsp] has not been started<br>Aug 2, 2015 11:50:16 PM org.apache.catalina.core.ContainerBase stop<br>INFO: Container org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/].[default] has not been started<br>Aug 2, 2015 11:50:16 PM org.apache.catalina.core.ContainerBase stop<br>INFO: Container org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/].[play] has not been started<br>Aug 2, 2015 11:50:16 PM org.apache.catalina.core.ContainerBase addChildInternal<br>SEVERE: ContainerBase.addChild: start:<br>LifecycleException:  Manager has not yet been started<br>at de.javakaffee.web.msm.MemcachedBackupSessionManager.stop(MemcachedBackupSessionManager.java:662)<br>at org.apache.catalina.core.StandardContext.stop(StandardContext.java:4882)<br>at org.apache.catalina.core.StandardContext.start(StandardContext.java:4778)<br>at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:799)<br>at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:779)<br>at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:601)<br>at org.apache.catalina.startup.HostConfig.deployWAR(HostConfig.java:943)<br>at org.apache.catalina.startup.HostConfig.deployWARs(HostConfig.java:778)<br>at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:504)<br>at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1317)<br>at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:324)<br>at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:142)<br>at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1065)<br>at org.apache.catalina.core.StandardHost.start(StandardHost.java:840)<br>at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1057)<br>at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:463)<br>at org.apache.catalina.core.StandardService.start(StandardService.java:525)<br>at org.apache.catalina.core.StandardServer.start(StandardServer.java:754)<br>at org.apache.catalina.startup.Catalina.start(Catalina.java:595)<br>at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)<br>at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)<br>at java.lang.reflect.Method.invoke(Method.java:597)<br>at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:289)<br>at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:414)</p>
-<p> 2015-08-02 23:53:34.483 INFO net.spy.memcached.auth.AuthThread:  Authenticated to sinno01/10.157.200.1:11211<br>Aug 2, 2015 11:53:34 PM de.javakaffee.web.msm.MemcachedSessionService startInternal<br>INFO: MemcachedSessionService starts initialization… (configured nodes definition sinno01:11211, failover nodes null)<br> 2015-08-02 23:53:34.687 INFO net.spy.memcached.MemcachedConnection:  Added {QA sa=c9ac5bbc8d844776.m.cnhzalicm10pub001.ocs.aliyuncs.com/10.157.200.1:11211, #Rops=0, #Wops=0, #iq=0, topRop=null, topWop=null, toWrite=0, interested=0} to connect queue<br>Aug 2, 2015 11:53:34 PM de.javakaffee.web.msm.RequestTrackingHostValve <init><br>INFO: Setting ignorePattern to .*.(gif|jpg|jpeg|png|bmp|swf|js|css|html|htm|xml|json)$<br>Aug 2, 2015 11:53:34 PM de.javakaffee.web.msm.MemcachedSessionService setLockingMode<br>INFO: Setting lockingMode to null<br>Aug 2, 2015 11:53:34 PM de.javakaffee.web.msm.MemcachedSessionService createTranscoderFactory<br>INFO: Creating transcoder factory de.javakaffee.web.msm.serializer.kryo.KryoTranscoderFactory<br>Aug 2, 2015 11:53:34 PM de.javakaffee.web.msm.serializer.kryo.KryoTranscoder <init><br>INFO: Starting with initialBufferSize 102400, maxBufferSize 2048000 and defaultSerializerFactory de.javakaffee.web.msm.serializer.kryo.ReferenceFieldSerializerFactory<br>Aug 2, 2015 11:53:34 PM de.javakaffee.web.msm.MemcachedSessionService startInternal<br>INFO: ——–</init></init></p>
-<ul>
-<li>MemcachedSessionService finished initialization:</li>
-<li>sticky: true</li>
-<li>operation timeout: 1000</li>
-<li>node ids: []</li>
-<li>failover node ids: []</li>
-<li>storage key prefix: session<em>sinno</em></li>
-</ul>
-</connector></manager>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2015/07/05/tomcat搭建session共享/" class="archive-article-date">
-  	<time datetime="2015-07-05T15:35:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-07-05</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/msm/">msm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/session共享/">session共享</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -1000,7 +949,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/你会爱我多久/" style="font-size: 10px;">你会爱我多久</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 15px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 11.67px;">忠忠闲谈</a> <a href="/tags/拥抱/" style="font-size: 10px;">拥抱</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/现在想见你/" style="font-size: 10px;">现在想见你</a> <a href="/tags/男人要的三份礼物/" style="font-size: 10px;">男人要的三份礼物</a> <a href="/tags/相逢/" style="font-size: 13.33px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
+    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/二十七八岁/" style="font-size: 10px;">二十七八岁</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/你会爱我多久/" style="font-size: 10px;">你会爱我多久</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 15px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 13.33px;">忠忠闲谈</a> <a href="/tags/拥抱/" style="font-size: 10px;">拥抱</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/现在想见你/" style="font-size: 10px;">现在想见你</a> <a href="/tags/男人要的三份礼物/" style="font-size: 10px;">男人要的三份礼物</a> <a href="/tags/相逢/" style="font-size: 13.33px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
     			</div>
     	</section>
     
