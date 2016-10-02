@@ -129,6 +129,97 @@
       <div class="body-wrap">
         
   
+    <article id="post-http(2)--重定向与负载均衡" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/29/http(2)--重定向与负载均衡/">http(2)--重定向与负载均衡</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##为什么要重定向<br>出于以下可靠性的考虑，web内容通常分布在很多地方，所以重定向普遍存在。<br>1.可靠地执行http事物<br>2.最小化时延<br>3.节约网络宽带</p>
+<p>如果一个位置出问题了，还有其他的可用。  </p>
+<p>如果客户端能去访问较近的资源，就可以更快地收到所有请求的内容，以降低响应时间；将目标服务器分散，还可以减少网络拥塞。  </p>
+<p>可以将重定向当作一组有助于找到“最佳”分布式内容的技术。  </p>
+<p>大多数重定向部署都包含了某些形式的负载均衡。也就是说，它们可以将输入报文的负载分摊到一组服务器中去。反之，因为输入报文一定会在分担负荷的服务器之间进行某种分布，所以任意形式的负载均衡中都包含了重定向。</p>
+<p>##重定向到何地</p>
+<p>从客户端向目标发送http请求，目标对其进行处理的角度来看，服务器、代理、缓存和网关对客户端来说都是服务器。</p>
+<p>很多重定向技术都可用于服务器、代理、缓存和网关，以为它们具有共同的，与服务器类似的特征。</p>
+<p>其他一些重定向技术是专门为特定类型的端点设计的，没有通用性。</p>
+<p>web服务器会根据每个ip来处理请求。将请求分摊到复制的服务器中去，就意味着应该把对某特定url的每条请求都发送到最佳的web服务器上去（最靠近客户端的、或负载最轻的或采用其他优化策略选择的服务器）</p>
+<p>代理希望根据每个协议来处理请求。在理想情况下，某个代理附近的所有http流量都应该通过这个代理传输。</p>
+<p>比如，如果某代理缓存靠近各种不同的客户端，那么理想情况下，所有请求都应流经这个代理缓存，因为代理缓存上会存储常用的文档，可以直接提供，从而避免通过更长、更昂贵的路径连接到原始服务器。</p>
+<p>重定向到代理就像从一条主要通路（无论它通往何处）上将流量分流到一条本地快捷路径上去一样。</p>
+<p>##重定向协议</p>
+<p>重定向的目标是尽快地将http报文发送到可用的web服务器上去。</p>
+<p>在穿过因特网的路径上，http报文传输的方向会受到http应用程序和报文经由的路由设备的影响</p>
+<p>1.配置创建客户端报文的浏览器应用程序，使其将报文发送给代理服务器</p>
+<p>2.dns解析程序会选择用于报文寻址的ip地址。对不同物理地域的不同客户端来说，这个ip地址可能不同。</p>
+<p>3.报文经过网络传输时，会被划分为一些带有地址的分组；交换机和路由器会检查分组中的tcp/ip地址，并据此来确定分组的发送路线</p>
+<p>4.web服务器可以通过http重定向将请求反弹给不同的web服务器</p>
+<p>##通用的重定向方法：</p>
+<p>###http重定向<br>web服务器可以将短的重定向报文发回给客户端，告诉他们去其他地方试试。<br>重定向服务器找到可用的负载最小的内容服务器，并将浏览器重定向到那台服务器上去。<br>对广泛分布的web站点来说，确定“最佳”的可用服务器会更复杂一些，不仅要考虑到服务器的负载，还要考虑到浏览器和服务器之间的因特网距离。<br>与其他一些形式的重定向相比，http重定向的优点之一就是重定向服务器知道客户端的ip地址；理论上来讲，它可以做出更合理的选择。</p>
+<p>浏览器向服务器发送http请求，重定向服务器没有回送带有http状态码200的web页面主体，而是回送了一个带有状态码302的重定向报文。浏览器会用重定向URL（Location）重新发送请求。</p>
+<p>缺点：</p>
+<ul>
+<li>需要原始服务器进行大量处理来判断要重定向到哪台服务器上去。有时，发布重定向所需的处理量几乎与提供页面本身所需的处理量一样。</li>
+<li>增加了用户时延，因为访问页面时要进行两次往返。</li>
+<li>如果重定向服务器出故障，站点就会瘫痪。</li>
+</ul>
+<p>###DNS重定向<br>DNS允许将几个ip地址关联到一个域中，可以配置DNS解析程序，或对其进行编程，以返回可变的ip地址。解析程序返回ip地址所基于的原则可以很简单（轮转），页可以很复杂（比如查看几台服务器上的负载，并返回负载最轻的服务器的ip地址）</p>
+<p>如baidu的DNS重定向<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">lizhongchen<span class="variable">@lizhongchen:</span>~$ nslookup www.baidu.com</div><div class="line"><span class="attribute">Server</span>:		<span class="number">127.0</span>.<span class="number">1.1</span></div><div class="line"><span class="attribute">Address</span>:	<span class="number">127.0</span>.<span class="number">1.1</span><span class="number">#53</span></div><div class="line"></div><div class="line">Non-authoritative <span class="attribute">answer</span>:</div><div class="line">www.baidu.com	canonical name = www.a.shifen.com.</div><div class="line"><span class="attribute">Name</span>:	www.a.shifen.com</div><div class="line"><span class="attribute">Address</span>: <span class="number">61.135</span>.<span class="number">169.121</span></div><div class="line"><span class="attribute">Name</span>:	www.a.shifen.com</div><div class="line"><span class="attribute">Address</span>: <span class="number">61.135</span>.<span class="number">169.125</span></div><div class="line"></div><div class="line">lizhongchen<span class="variable">@lizhongchen</span>:~$ nslookup www.baidu.com</div><div class="line"><span class="attribute">Server</span>:		<span class="number">127.0</span>.<span class="number">1.1</span></div><div class="line"><span class="attribute">Address</span>:	<span class="number">127.0</span>.<span class="number">1.1</span><span class="number">#53</span></div><div class="line"></div><div class="line">Non-authoritative <span class="attribute">answer</span>:</div><div class="line">www.baidu.com	canonical name = www.a.shifen.com.</div><div class="line"><span class="attribute">Name</span>:	www.a.shifen.com</div><div class="line"><span class="attribute">Address</span>: <span class="number">61.135</span>.<span class="number">169.125</span></div><div class="line"><span class="attribute">Name</span>:	www.a.shifen.com</div><div class="line"><span class="attribute">Address</span>: <span class="number">61.135</span>.<span class="number">169.121</span></div></pre></td></tr></table></figure></p>
+<p>任播寻址</p>
+<p>ip mac转发</p>
+<p>ip地址转发</p>
+<p>代理与缓存重定向技术：</p>
+<p>显式浏览器配置</p>
+<p>代理自动配置（PAC）</p>
+<p>web proxy代理自动发现协议（WPAD）</p>
+<p>web缓存协调协议（WCCP）</p>
+<p>因特网缓存协议（ICP）</p>
+<p>缓存分组路由协议（CARP）</p>
+<p>超文本缓存协议（HTCP）</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/03/29/http(2)--重定向与负载均衡/" class="archive-article-date">
+  	<time datetime="2016-03-29T03:15:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-29</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/负载均衡/">负载均衡</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-http(2)--URL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -708,67 +799,6 @@
 
 
   
-    <article id="post-Thread(2)--synchronized" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/18/Thread(2)--synchronized/">Thread(2)--synchronized</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>关键字synchronized取得的锁都是对象锁，而不是把一段代码或者方法当作锁。哪个线程先执行带synchronized关键字的方法，哪个线程就持有该方法所属对象的锁Lock，那么其他线程只能呈等待状态，前提是多个线程访问同一个对象。但如果多个线程访问多个对象，则jvm会创建多个锁。  </p>
-<p>synchronized拥有锁重入功能（自己可以再次获取自己的内部锁）。也就是在使用synchronized时，当一个线程得到一个对象锁后，再次请求此对象锁时是可以再次得到该对象的锁的。这也证明在一个synchronized方法／块的内部调用本类的其他synchronized方法／块时，是永远可以得到锁的。  </p>
-<p>可重入锁支持在父子类继承的环境中。  </p>
-<p>出现异常，锁自动释放。  </p>
-<p>synchronized不具有继承性，即父类中synchronized的方法，被子类重写后若子类不声明synchronized则子类的该方法不具有同步性。  </p>
-<p>synchronized代码块的同步性，  </p>
-<p>多个线程调用同一个对象中的不同名称的synchronized同步方法或synchronized(this)同步代码块时，调用的效果就是按顺序执行，也就是同步的，阻塞的。  </p>
-<p>synchronized(this)同步代码块中的this即是对象监视器。  </p>
-<p>synchronized方法的对象监视器为调用该方法的对象。  </p>
-<p>synchronized(非this对象x)格式的写法</p>
-<p>即使x对象的属性被改变，只要对象不变，运行的结果还是同步。</p>
-<p>static静态同步synchronized方法，对当前的*.java文件对应的Class类进行持锁。而非静态synchronized<br>与synchronized(class)代码块</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/02/18/Thread(2)--synchronized/" class="archive-article-date">
-  	<time datetime="2016-02-18T03:53:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-02-18</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread/">thread</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -853,7 +883,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/二十七八岁/" style="font-size: 10px;">二十七八岁</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/你会爱我多久/" style="font-size: 10px;">你会爱我多久</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 15px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 13.33px;">忠忠闲谈</a> <a href="/tags/拥抱/" style="font-size: 10px;">拥抱</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/现在想见你/" style="font-size: 10px;">现在想见你</a> <a href="/tags/男人要的三份礼物/" style="font-size: 10px;">男人要的三份礼物</a> <a href="/tags/相逢/" style="font-size: 13.33px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
+    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/二十七八岁/" style="font-size: 10px;">二十七八岁</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/你会爱我多久/" style="font-size: 10px;">你会爱我多久</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 15px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 15px;">忠忠闲谈</a> <a href="/tags/拥抱/" style="font-size: 10px;">拥抱</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/现在想见你/" style="font-size: 10px;">现在想见你</a> <a href="/tags/男人要的三份礼物/" style="font-size: 10px;">男人要的三份礼物</a> <a href="/tags/相逢/" style="font-size: 13.33px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
     			</div>
     	</section>
     

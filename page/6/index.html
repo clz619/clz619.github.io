@@ -129,6 +129,66 @@
       <div class="body-wrap">
         
   
+    <article id="post-kafka源码分析环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/21/kafka源码分析环境搭建/">apache kafka 0.8.21源码分析工程搭建(IDEA)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###1.gradle安装  </p>
+<p>lizhongchendeMacBook-Pro:~ clz$ vi .bash_profile</p>
+<p>export GRADLE_HOME=/Users/clz/Downloads/itsoft/gradle-2.7</p>
+<p>export PATH=$GRADLE_HOME/bin:$PATH</p>
+<p>lizhongchendeMacBook-Pro:~ clz$ source .bash_profile<br>lizhongchendeMacBook-Pro:~ clz$ gradle -v</p>
+<p>Gradle 2.7</p>
+<p>Build time:   2015-09-14 07:26:16 UTC<br>Build number: none<br>Revision:     c41505168da69fb0650f4e31c9e01b50ffc97893</p>
+<p>Groovy:       2.3.10<br>Ant:          Apache Ant(TM) version 1.9.3 compiled on December 23 2013<br>JVM:          1.7.0_71 (Oracle Corporation 24.71-b01)<br>OS:           Mac OS X 10.10.5 x86_64</p>
+<p>###2.源码<br>kafka源码<a href="https://www.apache.org/dyn/closer.cgi?path=/kafka/0.8.2.1/kafka-0.8.2.1-src.tgz" target="_blank" rel="external">下载</a>  </p>
+<p>###3.<br>gradle idea</p>
+<p>导入</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2015/09/21/kafka源码分析环境搭建/" class="archive-article-date">
+  	<time datetime="2015-09-21T13:50:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-09-21</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDEA/">IDEA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Think in UML(1)－－为什么需要UML" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -771,100 +831,6 @@ private String sort;
 
 
   
-    <article id="post-centos7安装mysql5.6" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/06/centos7安装mysql5.6/">centos7安装mysql5.6</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-下载mysql-rpm"><a href="#1-下载mysql-rpm" class="headerlink" title="1. 下载mysql rpm"></a>1. 下载mysql rpm</h4><p>进入mysql官网 <a href="http://dev.mysql.com/downloads/mysql/#downloads" target="_blank" rel="external">http://dev.mysql.com/downloads/mysql/#downloads</a> 下载</p>
-<p>得到V76361-01.zip</p>
-<h4 id="2-解压"><a href="#2-解压" class="headerlink" title="2. 解压"></a>2. 解压</h4><p>解压V76361-01.zip</p>
-<blockquote>
-<p>unzip V76361-01.zip</p>
-</blockquote>
-<p>获得文件<br>MySQL-client-advanced-5.6.25-1.el7.x86_64.rpm<br>MySQL-devel-advanced-5.6.25-1.el7.x86_64.rpm<br>MySQL-embedded-advanced-5.6.25-1.el7.x86_64.rpm<br>MySQL-server-advanced-5.6.25-1.el7.x86_64.rpm<br>MySQL-shared-advanced-5.6.25-1.el7.x86_64.rpm<br>MySQL-shared-compat-advanced-5.6.25-1.el7.x86_64.rpm<br>MySQL-test-advanced-5.6.25-1.el7.x86_64.rpm  </p>
-<h4 id="3-检查是不是已经安装了mysql"><a href="#3-检查是不是已经安装了mysql" class="headerlink" title="3. 检查是不是已经安装了mysql"></a>3. 检查是不是已经安装了mysql</h4><blockquote>
-<p>rpm -qa | grep -i mysql<br>##如果安装了先卸载旧的版本<br>yum -y remove mysql</p>
-</blockquote>
-<h4 id="4-安装"><a href="#4-安装" class="headerlink" title="4. 安装"></a>4. 安装</h4><blockquote>
-<p>rpm -ivh MySQL-server-advanced-5.6.25-1.el7.x86_64.rpm<br>准备中…<br>################################# [100%]<br>file /usr/share/mysql/czech/errmsg.sys from install of MySQL-server-advanced-5.6.25-1.el7.x86_64 conflicts with file from package mariadb-libs-1:5.5.35-3.el7.x86_64 </p>
-</blockquote>
-<p>发现机器上已安装<a href="https://mariadb.org/" target="_blank" rel="external">mariadb</a> 造成了安装mysql冲突</p>
-<p>卸载mariadb</p>
-<blockquote>
-<p>yum -y remove mariadb-libs-1:5.5.35-3.el7.x86_64  </p>
-</blockquote>
-<p>重新安装</p>
-<blockquote>
-<p>rpm -ivh MySQL-server-advanced-5.6.25-1.el7.x86_64.rpm<br>rpm -ivh MySQL-devel-advanced-5.6.25-1.el7.x86_64.rpm<br>rpm -ivh MySQL-client-advanced-5.6.25-1.el7.x86_64.rpm  </p>
-</blockquote>
-<p>安装完成…</p>
-<p>安装后提示  </p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">A RANDOM PASSWORD HAS BEEN <span class="keyword">SET</span> <span class="keyword">FOR</span> THE MySQL root <span class="keyword">USER</span> !</div><div class="line">You will find that <span class="keyword">password</span> <span class="keyword">in</span> <span class="string">'/root/.mysql_secret'</span>.</div><div class="line"></div><div class="line">You must <span class="keyword">change</span> that <span class="keyword">password</span> <span class="keyword">on</span> your <span class="keyword">first</span> <span class="keyword">connect</span>,</div><div class="line"><span class="keyword">no</span> other <span class="keyword">statement</span> but <span class="string">'SET PASSWORD'</span> will be accepted.</div><div class="line">See the <span class="keyword">manual</span> <span class="keyword">for</span> the semantics <span class="keyword">of</span> the <span class="string">'password expired'</span> flag.</div><div class="line"></div><div class="line">Also, the <span class="keyword">account</span> <span class="keyword">for</span> the anonymous <span class="keyword">user</span> has been removed.</div><div class="line"></div><div class="line"><span class="keyword">In</span> addition, you can run:</div><div class="line"></div><div class="line">  /usr/<span class="keyword">bin</span>/mysql_secure_installation</div><div class="line"></div><div class="line">which will also give you the <span class="keyword">option</span> <span class="keyword">of</span> removing the <span class="keyword">test</span> database.</div><div class="line">This <span class="keyword">is</span> strongly recommended <span class="keyword">for</span> production servers.</div><div class="line"></div><div class="line">See the <span class="keyword">manual</span> <span class="keyword">for</span> more instructions.</div><div class="line"></div><div class="line">Please report <span class="keyword">any</span> problems <span class="keyword">at</span> <span class="keyword">http</span>://bugs.mysql.com/</div><div class="line"></div><div class="line">The latest information about MySQL <span class="keyword">is</span> available <span class="keyword">on</span> the web <span class="keyword">at</span></div><div class="line"></div><div class="line">  <span class="keyword">http</span>://www.mysql.com</div><div class="line"></div><div class="line">Support MySQL <span class="keyword">by</span> buying support/licenses <span class="keyword">at</span> <span class="keyword">http</span>://shop.mysql.com</div><div class="line"></div><div class="line"><span class="keyword">New</span> <span class="keyword">default</span> config <span class="keyword">file</span> was created <span class="keyword">as</span> /usr/my.cnf <span class="keyword">and</span></div><div class="line">will be used <span class="keyword">by</span> <span class="keyword">default</span> <span class="keyword">by</span> the <span class="keyword">server</span> <span class="keyword">when</span> you <span class="keyword">start</span> it.</div><div class="line">You may edit this <span class="keyword">file</span> <span class="keyword">to</span> <span class="keyword">change</span> <span class="keyword">server</span> <span class="keyword">settings</span></div></pre></td></tr></table></figure>
-<p>mysql自动创建了root并且随机生成了它的密码。<br>创建了默认的配置文件/usr/my.cn</p>
-<h4 id="5-账号配置"><a href="#5-账号配置" class="headerlink" title="5. 账号配置"></a>5. 账号配置</h4><p>获取随机的密码</p>
-<blockquote>
-<p>cat /root/.mysql_secret  </p>
-</blockquote>
-<p>启动mysql</p>
-<blockquote>
-<p>service mysql start  </p>
-</blockquote>
-<p>重置密码且修改基本配置</p>
-<blockquote>
-<p>/usr/bin/mysql_secure_installation  </p>
-</blockquote>
-<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">NOTE: RUNNING ALL PARTS <span class="keyword">OF</span> THIS SCRIPT <span class="keyword">IS</span> RECOMMENDED <span class="keyword">FOR</span> ALL MySQL</div><div class="line">      SERVERS <span class="keyword">IN</span> PRODUCTION USE!  PLEASE READ <span class="keyword">EACH</span> <span class="keyword">STEP</span> CAREFULLY!</div><div class="line"></div><div class="line"><span class="keyword">In</span> <span class="keyword">order</span> <span class="keyword">to</span> log <span class="keyword">into</span> MySQL <span class="keyword">to</span> secure it, we<span class="comment">'ll need the current</span></div><div class="line">password <span class="keyword">for</span> the root user.  <span class="keyword">If</span> you<span class="comment">'ve just installed MySQL, and</span></div><div class="line">you haven<span class="comment">'t set the root password yet, the password will be blank,</span></div><div class="line">so you should just press enter here.</div><div class="line"></div><div class="line">Enter current password <span class="keyword">for</span> root (enter <span class="keyword">for</span> none): </div><div class="line">OK, successfully used password, moving <span class="keyword">on</span>...</div><div class="line"></div><div class="line">Setting the root password ensures that nobody can log <span class="keyword">into</span> the MySQL</div><div class="line">root user without the proper authorisation.</div><div class="line"></div><div class="line">You already have a root password <span class="keyword">set</span>, so you can safely answer <span class="comment">'n'.</span></div><div class="line"></div><div class="line">Change the root password? [Y/n] Y</div><div class="line"><span class="keyword">New</span> password: </div><div class="line">Re-enter <span class="keyword">new</span> password: </div><div class="line">Password updated successfully!</div><div class="line">Reloading privilege tables..</div><div class="line"> ... Success!</div><div class="line"></div><div class="line"><span class="keyword">By</span> <span class="keyword">default</span>, a MySQL installation has an anonymous user, allowing anyone</div><div class="line"><span class="keyword">to</span> log <span class="keyword">into</span> MySQL without having <span class="keyword">to</span> have a user account created <span class="keyword">for</span></div><div class="line">them.  This <span class="keyword">is</span> intended only <span class="keyword">for</span> testing, <span class="keyword">and</span> <span class="keyword">to</span> make the installation</div><div class="line">go a bit smoother.  You should remove them before moving <span class="keyword">into</span> a</div><div class="line">production environment.</div><div class="line"></div><div class="line">Remove anonymous users? [Y/n] Y</div><div class="line"> ... Success!</div><div class="line"></div><div class="line">Normally, root should only be allowed <span class="keyword">to</span> connect <span class="keyword">from</span> <span class="comment">'localhost'.  This</span></div><div class="line">ensures that someone cannot guess at the root password <span class="keyword">from</span> the network.</div><div class="line"></div><div class="line">Disallow root login remotely? [Y/n] y</div><div class="line"> ... Success!</div><div class="line"></div><div class="line"><span class="keyword">By</span> <span class="keyword">default</span>, MySQL comes <span class="keyword">with</span> a database named <span class="comment">'test' that anyone can</span></div><div class="line">access.  This <span class="keyword">is</span> also intended only <span class="keyword">for</span> testing, <span class="keyword">and</span> should be removed</div><div class="line">before moving <span class="keyword">into</span> a production environment.</div><div class="line"></div><div class="line">Remove test database <span class="keyword">and</span> access <span class="keyword">to</span> it? [Y/n] y</div><div class="line"> - Dropping test database...</div><div class="line"> ... Success!</div><div class="line"> - Removing privileges <span class="keyword">on</span> test database...</div><div class="line"> ... Success!</div><div class="line"></div><div class="line">Reloading the privilege tables will ensure that all changes made so far</div><div class="line">will <span class="keyword">take</span> effect immediately.</div><div class="line"></div><div class="line">Reload privilege tables now? [Y/n] y</div><div class="line"> ... Success!</div><div class="line"></div><div class="line">All done!  <span class="keyword">If</span> you<span class="comment">'ve completed all of the above steps, your MySQL</span></div><div class="line">installation should now be secure.</div><div class="line"></div><div class="line">Thanks <span class="keyword">for</span> <span class="keyword">using</span> MySQL!</div><div class="line"></div><div class="line">Cleaning up...</div></pre></td></tr></table></figure>
-<h4 id="6-登录"><a href="#6-登录" class="headerlink" title="6. 登录"></a>6. 登录</h4><blockquote>
-<p>mysql -u root -p密码 -h ip地址 -P3306 数据库名</p>
-</blockquote>
-<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Warning: <span class="keyword">Using</span> a password <span class="keyword">on</span> the command line <span class="keyword">interface</span> can be insecure.</div><div class="line">Welcome <span class="keyword">to</span> the MySQL monitor.  Commands <span class="keyword">end</span> <span class="keyword">with</span> ; <span class="keyword">or</span> \g.</div><div class="line">Your MySQL connection id <span class="keyword">is</span> <span class="number">13</span></div><div class="line">Server version: <span class="number">5.6</span>.<span class="number">25</span>-enterprise-commercial-advanced MySQL Enterprise Server - Advanced Edition (Commercial)</div><div class="line"></div><div class="line">Copyright (c) <span class="number">2000</span>, <span class="number">2015</span>, Oracle <span class="keyword">and</span>/<span class="keyword">or</span> its affiliates. All rights reserved.</div><div class="line"></div><div class="line">Oracle <span class="keyword">is</span> a registered trademark <span class="keyword">of</span> Oracle Corporation <span class="keyword">and</span>/<span class="keyword">or</span> its</div><div class="line">affiliates. Other names may be trademarks <span class="keyword">of</span> their respective</div><div class="line">owners.</div><div class="line"></div><div class="line"><span class="keyword">Type</span> <span class="string">'help;'</span> <span class="keyword">or</span> <span class="string">'\h'</span> <span class="keyword">for</span> help. <span class="keyword">Type</span> <span class="string">'\c'</span> <span class="keyword">to</span> clear the current input statement.</div><div class="line"></div><div class="line">mysql&gt;</div></pre></td></tr></table></figure>
-<h4 id="7-MySql开启远程用户登录"><a href="#7-MySql开启远程用户登录" class="headerlink" title="7.MySql开启远程用户登录"></a>7.MySql开启远程用户登录</h4><p>　　GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root’@’%’ IDENTIFIED BY ‘huawei’ WITH GRANT OPTION; FLUSH PRIVILEGES;</p>
-<p>　　执行上面的命令后，重启Mysql就行了。~~~</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2015/07/06/centos7安装mysql5.6/" class="archive-article-date">
-  	<time datetime="2015-07-05T16:01:16.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-07-06</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos/">centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/运维/">运维</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -949,7 +915,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/二十七八岁/" style="font-size: 10px;">二十七八岁</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/你会爱我多久/" style="font-size: 10px;">你会爱我多久</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 15px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 13.33px;">忠忠闲谈</a> <a href="/tags/拥抱/" style="font-size: 10px;">拥抱</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/现在想见你/" style="font-size: 10px;">现在想见你</a> <a href="/tags/男人要的三份礼物/" style="font-size: 10px;">男人要的三份礼物</a> <a href="/tags/相逢/" style="font-size: 13.33px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
+    				<a href="/tags/Aware/" style="font-size: 10px;">Aware</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/ContextLoaderListener/" style="font-size: 10px;">ContextLoaderListener</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/aop/" style="font-size: 11.67px;">aop</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/camel，模版/" style="font-size: 10px;">camel，模版</a> <a href="/tags/centos/" style="font-size: 16.67px;">centos</a> <a href="/tags/curator/" style="font-size: 10px;">curator</a> <a href="/tags/dead-walker/" style="font-size: 11.67px;">dead walker</a> <a href="/tags/docker/" style="font-size: 16.67px;">docker</a> <a href="/tags/elrepo/" style="font-size: 10px;">elrepo</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitolite/" style="font-size: 10px;">gitolite</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaWeb/" style="font-size: 11.67px;">javaWeb</a> <a href="/tags/jvm/" style="font-size: 20px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/msm/" style="font-size: 10px;">msm</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/osgi/" style="font-size: 10px;">osgi</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sdk/" style="font-size: 11.67px;">sdk</a> <a href="/tags/session共享/" style="font-size: 10px;">session共享</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/sinno/" style="font-size: 15px;">sinno</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/srcum/" style="font-size: 10px;">srcum</a> <a href="/tags/sts/" style="font-size: 10px;">sts</a> <a href="/tags/thread/" style="font-size: 11.67px;">thread</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/top/" style="font-size: 10px;">top</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/virgo/" style="font-size: 10px;">virgo</a> <a href="/tags/xsd/" style="font-size: 18.33px;">xsd</a> <a href="/tags/xsd-facets/" style="font-size: 10px;">xsd,facets</a> <a href="/tags/xsd-schema-definition/" style="font-size: 10px;">xsd,schema definition</a> <a href="/tags/zookeeper/" style="font-size: 11.67px;">zookeeper</a> <a href="/tags/二十七八岁/" style="font-size: 10px;">二十七八岁</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/人性/" style="font-size: 10px;">人性</a> <a href="/tags/仓库/" style="font-size: 10px;">仓库</a> <a href="/tags/你会爱我多久/" style="font-size: 10px;">你会爱我多久</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/分布式/" style="font-size: 13.33px;">分布式</a> <a href="/tags/动态域名/" style="font-size: 10px;">动态域名</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/图形模式/" style="font-size: 10px;">图形模式</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/将来的那个人/" style="font-size: 10px;">将来的那个人</a> <a href="/tags/工作感想/" style="font-size: 10px;">工作感想</a> <a href="/tags/开放平台/" style="font-size: 10px;">开放平台</a> <a href="/tags/引擎/" style="font-size: 10px;">引擎</a> <a href="/tags/张小娴/" style="font-size: 15px;">张小娴</a> <a href="/tags/忠忠闲谈/" style="font-size: 15px;">忠忠闲谈</a> <a href="/tags/拥抱/" style="font-size: 10px;">拥抱</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 15px;">架构</a> <a href="/tags/源码/" style="font-size: 11.67px;">源码</a> <a href="/tags/现在想见你/" style="font-size: 10px;">现在想见你</a> <a href="/tags/男人要的三份礼物/" style="font-size: 10px;">男人要的三份礼物</a> <a href="/tags/相逢/" style="font-size: 13.33px;">相逢</a> <a href="/tags/美丽说/" style="font-size: 10px;">美丽说</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/负载均衡/" style="font-size: 10px;">负载均衡</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a> <a href="/tags/追求/" style="font-size: 10px;">追求</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a> <a href="/tags/镜像/" style="font-size: 13.33px;">镜像</a>
     			</div>
     	</section>
     
